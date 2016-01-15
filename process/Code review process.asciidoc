@@ -86,28 +86,28 @@ To set up a personal fork:
 
 image:https://docs.google.com/drawings/d/1QByAJgaBc5IVUfTsXcNnHImUqO0RidaBfnJMzNTSR3M/pub?w=961&h=384[Step 1]
 
-1. In github go to e.g.: https://github.com/log2timeline/plaso and select
+`1`. In github go to e.g.: https://github.com/log2timeline/plaso and select
 "fork". This will create your personal fork.
 
-2. Clone your personal fork repository to your development workstation e.g.
+`2`. Clone your personal fork repository to your development workstation e.g.
 ....
 git clone https://github.com/$USERNAME/plaso.git
 ....
 
-3. Add the log2timeline project as upstream:
+`3`. Add the log2timeline project as upstream:
 ....
 cd plaso
 git remote add upstream https://github.com/log2timeline/plaso.git
 ....
 
-4. Make sure git is configured correctly:
+`4`. Make sure git is configured correctly:
 ....
 git config --global user.name "Full Name"
 git config --global user.email name@example.com
 git config --global push.default matching
 ....
 
-5. Make sure `.netrc` is configured
+`5`. Make sure `.netrc` is configured
 
 :numbered!:
 [appendix]
