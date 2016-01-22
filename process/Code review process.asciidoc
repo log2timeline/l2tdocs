@@ -153,14 +153,16 @@ git push
 ./utils/review.py create
 ....
 
-* run the linter
-* run the unit tests
-* check if your local clone is up to date with the upstream master and update
+The script performs the following steps:
+
+* runs the linter
+* runs the unit tests
+* checks if your local clone is up to date with the upstream/master and updates
 if necessary by running: `git pull --rebase upstream master`
-* upload the diff with upstream master to codereview.appspot.com
-* create a github pull request (PR)
-* mail the maintainers
-* create a review file in `./reviews/`
+* uploads the diff with upstream/master to codereview.appspot.com
+* creates a github pull request (PR)
+* mails the maintainers
+* creates a review file in `./reviews/`
 
 [NOTE]
 The diff sent to codereview.appspot.com is relative to the state of
@@ -198,6 +200,17 @@ git push
 ./utils/review.py update
 ....
 
+The script performs the following steps:
+
+* determines the codereview.appspot.com issue number from the corresponding
+review file in `./reviews/`
+* runs the linter
+* runs the unit tests
+* checks if your local clone is up to date with the upstream/master and updates
+if necessary by running: `git pull --rebase upstream master`
+* uploads the diff with upstream/master to codereview.appspot.com
+* mails the maintainers
+
 `3.` Any update to the feature branch while there is a PR will trigger the
 automated testing.
 
@@ -218,11 +231,18 @@ codereview.appspot.com
 * `ORGANIZATION:BRANCH` is the github organization, typically the username, and
 the name of the feature branch
 
-*TODO decribe the steps merge takes*
+The script performs the following steps:
 
-....
-git pull --squash https://github.com/$USERNAME/plaso.git $BRANCH
-....
+* checks if the maintainer's local clone is up to date with the orgin/master and
+updates if necessary by running: `git pull`
+* pulls in the changes from the feature branch by runing:
+`git pull --squash https://github.com/$USERNAME/plaso.git $BRANCH`
+* updates the API documentation
+* updates the version information
+* runs the linter
+* runs the unit tests
+* commits the changes under the name of the contributor and pushes the
+changes to upstream
 
 === Step 8 - Closing a code review
 After the CL has been merged the contributor can remove the feature branch and close the codereview.
@@ -238,16 +258,27 @@ Where:
 
 * `BRANCH` is the name of the feature branch
 
-*TODO decribe the steps close takes*
-....
-Remove the feature branch from the local clone and the fork
-Removes ./reviews/CL
-Closes the PR
-Close the code review on Rietveld
-....
+The script performs the following steps:
+
+* Removes the feature branch from your local clone and your online fork
+(origin). This triggers the PR to close.
+* Closes the code review on codereview.appspot.com
+* Removes the review file in `./reviews`
 
 :numbered!:
 [appendix]
 == Review file
-*TODO describe the review file format*
+
+A review file has the name of the corresponding feature branch e.g. `myfeature`.
+
+It currently consists of a single number e.g.
+....
+285170043
+....
+
+This number is the corresponding code review issue on codereview.appspot.com.
+
+[NOTE]
+The format of the review file is subject to change. There are ideas to add
+the diffbase and other code review relevant information.
 
