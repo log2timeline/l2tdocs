@@ -40,6 +40,7 @@ in the "LICENSE" file.
 |===
 | Version | Author | Date | Comments
 | 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
+| 0.0.2 | Joachim Metz | Febuary 2016 | Additional information.
 |===
 
 :numbered:
@@ -54,7 +55,7 @@ Plaso log2timeline currently support 2 modes of operation namely:
 * multi process extraction
 
 ==== Single process extraction
-In single processing mode plaso log2timeline takes the following steps:
+In single processing mode plaso log2timeline preforms the following steps:
 
 1. Preprocess the input (or source) data
   a. Determine if the source is a storage media device or image, a single file
@@ -76,8 +77,8 @@ Steps 2, 3 and 4 are repeated until there are no more files remaining to be
 processed.
 
 ==== Multi process extraction
-In multi process extraction mode plaso log2timeline does streps 2, 3 and 4
-are run in parallel, where there is:
+In multi process extraction mode plaso log2timeline performs steps 2, 3 and 4
+are in parallel, where there is:
 
 * one "collector" process to determine the files to process
 * multiple "worker" processes to process the content of the files
@@ -105,7 +106,7 @@ storage file (or equivalent).
 * Multiple "workers" process listen on a 1-to-n task queue for incoming
 processing tasks
 * One "storage writer" process listens on a n-to-1 queue for incoming
-storage tasks. That result in writing the outcome of the processing to
+storage tasks. That results in writing the outcome of the processing to
 the plaso storage file.
 
 image:https://docs.google.com/drawings/d/1i8u_vaj0ALDP-2mGGUw81uxUQ0L49F4tTj5cnxGF3Rw/pub?w=960&h=720[Desired situation]
@@ -117,6 +118,27 @@ a known archive file or compressed stream file.
 * Calculate a digest hash the content of the file.
 * Extract events from the file. This includes determining if the file has
 a known format and pre-select the appropriate parser.
+
+==== Additional features
+
+* Since the status of the tasks is tracked persistently this could allow us to
+introduce functionality to resume processing when processing was stopped
+
+Over the last few year the processing model of plaso log2timeline has changed 
+from a "brute force" all parsers on the source data to a more sophisticated 
+approach where preselection is done based on format information e.g. header and 
+footer signatures. In the 1.3 content hashing was added and in 1.4 additional 
+filters were added to prevent plaso log2timeline from unnecessary parsing 
+certain files identified as gzip compressed files. A secondary idea of the 
+phased processing is to design this pre-extraction processing in a more 
+sustainable way so we can add:
+
+* white, grey and black listing based on digest hashes
+* event tagging based on signatures, e.g. yara
+* extraction of non-timestamp data e.g. strings
+
+TODO:
+* split event source from event
 
 == Design
 
