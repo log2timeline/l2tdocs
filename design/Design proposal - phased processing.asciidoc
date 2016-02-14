@@ -102,14 +102,12 @@ In short the current approach is unnecessary complex and fragile.
 In the desired situation multi process extraction takes the following approach:
 
 * One "foreman" (or "main") process has the role of issueing tasks to the
-"workers". The "foreman" monitors the status of the "worker" and "storage
-writer" processes and tracks the overall processing status in the plaso
-storage file (or equivalent).
-* Multiple "workers" process listen on a 1-to-n task queue for incoming
-processing tasks
-* One "storage writer" process listens on a n-to-1 queue for incoming
-storage tasks. That results in writing the outcome of the processing to
-the plaso storage file.
+"workers". The "foreman" monitors the status of the "workers" processes and
+tracks the overall processing status in the main storage file (or equivalent).
+* Multiple "workers" process listen on for incoming processing tasks and queue
+then locally.
+
+The "foreman" regulary polls the "workers" for processing status and results.
 
 image:https://docs.google.com/drawings/d/1i8u_vaj0ALDP-2mGGUw81uxUQ0L49F4tTj5cnxGF3Rw/pub?w=960&h=720[Desired situation]
 
