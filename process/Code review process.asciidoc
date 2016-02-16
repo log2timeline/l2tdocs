@@ -30,14 +30,6 @@ Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included
 in the "LICENSE" file.
 ....
 
-[preface]
-== Revision history
-[cols="1,1,1,5",options="header"]
-|===
-| Version | Author | Date | Comments
-| 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
-|===
-
 :numbered:
 == Introduction
 The plaso review process was in need of some revision to allow us to use the
@@ -55,7 +47,7 @@ review process more user friendly.
 
 === Need for change
 
-* current solution requires contributors to have commit access
+* current solution requires all contributors to have commit access
 ** not all have enabled 2 factor authentication
 ** additional administrative burden
 ** larger risk of a commit messing up master repo
@@ -107,9 +99,10 @@ git config --global user.email name@example.com
 git config --global push.default matching
 ....
 
-`5`. Make sure `.netrc` is configured
+`5`. Make sure `.netrc` is configured. For more information see:
+https://gist.github.com/technoweenie/1072829
 
-=== Step 2 - Starting a new feature branch
+=== Step 2 - Start a new feature branch
 Every code change is stored in a separate feature branch:
 
 image:https://docs.google.com/drawings/d/1UoE1eYii-9ofnyuqG0ZtB67WpL4xYA3NMJ0IkRRWoCA/pub?w=960&h=720[Step 2]
@@ -130,15 +123,15 @@ git push --set-upstream origin feature
 ....
 
 === Step 3 - Making changes
-Make your changes to the code and make sure to up them to the feature branch of
-your fork.
+Make your changes to the code and make sure to push them to the feature branch
+of your fork.
 
 Commit all code changes to your feature branch and upload them:
 ....
 git push
 ....
 
-=== Step 4 - Starting a code review
+=== Step 4 - Start a code review
 Once you think your changes are ready, you start the review process.
 
 image:https://docs.google.com/drawings/d/19cuQJOD7vK6EsBpW7SpyD6It3xtnYPhCdMHqaxOkgSg/pub?w=960&h=720[Step 3]
@@ -186,7 +179,7 @@ contributor fix this.
 
 * comment on the changes on: https://codereview.appspot.com/[codereview.appspot.com]
 
-=== Step 6 - Updating a code review
+=== Step 6 - Update code review
 The process of updating a code reviews is very similar to that of starting a
 code review.
 
@@ -216,6 +209,9 @@ automated testing.
 
 === Step 7 - Merging the code review with upstream
 After the review is done the reviewer will merge the CL and submit it to upstream.
+
+[NOTE]
+Only project maintainers need to perform this step.
 
 image:https://docs.google.com/drawings/d/1KpX22NbgTLp6NFkrAUGppFajI4MTkrACUbiEAOO4Vv4/pub?w=960&h=720[Step 7]
 
@@ -266,6 +262,14 @@ The script performs the following steps:
 * Removes the review file in `./reviews`
 
 :numbered!:
+[appendix]
+== Revision history
+[cols="1,1,1,5",options="header"]
+|===
+| Version | Author | Date | Comments
+| 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
+|===
+
 [appendix]
 == Review file
 
