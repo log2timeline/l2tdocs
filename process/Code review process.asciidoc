@@ -155,7 +155,7 @@ if necessary by running: `git pull --rebase upstream master`
 * uploads the diff with upstream/master to codereview.appspot.com
 * creates a github pull request (PR)
 * mails the maintainers
-* creates a review file in `./reviews/`
+* creates a review file in `./review/`
 
 [NOTE]
 The diff sent to codereview.appspot.com is relative to the state of
