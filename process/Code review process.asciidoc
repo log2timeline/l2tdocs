@@ -30,43 +30,20 @@ Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included
 in the "LICENSE" file.
 ....
 
+[preface]
+== Revision history
+[cols="1,1,1,5",options="header"]
+|===
+| Version | Author | Date | Comments
+| 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
+|===
+
 :numbered:
 == Introduction
 The plaso review process was in need of some revision to allow us to use the
 continuous integration (CI) testing functionality of github.
 
-== Code review process - version 1
-In the first version of the plaso code review process we used Rietveld
-(codereview.appspot.com) for code reviews. Rietveld provides a Python script
-named upload.py to upload code diffs to codereview.appspot.com. Though it has
-git support, Rietveld was build around svn and therefore does not entirely
-match a git-based workflow.
-
-Several utility scripts have been built around upload.py to make the code
-review process more user friendly.
-
-=== Need for change
-
-* current solution requires all contributors to have commit access
-** not all have enabled 2 factor authentication
-** additional administrative burden
-** larger risk of a commit messing up master repo
-* want automated testing on code reviews
-* utility scripts do not support the Windows operating system
-
-=== Alternatives
-
-* github PR review; several objections:
-** github makes a mess of the commit history
-** very slow on large reviews
-** unable to track multiple patch sets easily
-* reviewable.io; improvement over github PR review
-** has patch set support
-** looks nice but UX unclear
-
-So decision to stick with Rietveld and fake integrations.
-
-== Code review process - version 2
+== Code review process
 
 * Step 1 - set up your personal fork
 
@@ -261,15 +238,38 @@ The script performs the following steps:
 * Closes the code review on codereview.appspot.com
 * Removes the review file in `./reviews`
 
-:numbered!:
-[appendix]
-== Revision history
-[cols="1,1,1,5",options="header"]
-|===
-| Version | Author | Date | Comments
-| 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
-|===
+== Previous code review process
+In the first version of the plaso code review process we used Rietveld
+(codereview.appspot.com) for code reviews. Rietveld provides a Python script
+named upload.py to upload code diffs to codereview.appspot.com. Though it has
+git support, Rietveld was build around svn and therefore does not entirely
+match a git-based workflow.
 
+Several utility scripts have been built around upload.py to make the code
+review process more user friendly.
+
+=== Need for change
+
+* current solution requires all contributors to have commit access
+** not all have enabled 2 factor authentication
+** additional administrative burden
+** larger risk of a commit messing up master repo
+* want automated testing on code reviews
+* utility scripts do not support the Windows operating system
+
+=== Alternatives
+
+* github PR review; several objections:
+** github makes a mess of the commit history
+** very slow on large reviews
+** unable to track multiple patch sets easily
+* reviewable.io; improvement over github PR review
+** has patch set support
+** looks nice but UX unclear
+
+So decision to stick with Rietveld and fake integrations.
+
+:numbered!:
 [appendix]
 == Review file
 
