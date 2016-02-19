@@ -239,7 +239,7 @@ The script performs the following steps:
 * Removes the review file in `./reviews`
 
 == Previous code review process
-In the first version of the plaso code review process we used Rietveld
+In the previous version of the plaso code review process we used Rietveld
 (codereview.appspot.com) for code reviews. Rietveld provides a Python script
 named upload.py to upload code diffs to codereview.appspot.com. Though it has
 git support, Rietveld was build around svn and therefore does not entirely
