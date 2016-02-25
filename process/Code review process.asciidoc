@@ -1,0 +1,284 @@
+= Code review process
+
+:toc:
+:toclevels: 4
+
+:numbered!:
+[abstract]
+== Summary
+Description of the code review process using by the log2timeline projects
+
+[preface]
+== Document information
+[cols="1,5"]
+|===
+| Author(s): | Joachim Metz <joachim.metz@gmail.com>
+| Abstract: | Description of the code review process using by the log2timeline projects
+| Classification: | Public
+| Keywords: | Design proposal
+| Status: | Draft
+|===
+
+[preface]
+== License
+....
+Copyright (C) 2016, log2timeline projects maintainers <log2timeline-maintainers@googlegroups.com>
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.3 or any later version
+published by the Free Software Foundation; with no Invariant Sections, no
+Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included
+in the "LICENSE" file.
+....
+
+[preface]
+== Revision history
+[cols="1,1,1,5",options="header"]
+|===
+| Version | Author | Date | Comments
+| 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
+|===
+
+:numbered:
+== Code review process
+In the next paragraphs the review process of the log2timeline projects as plaso
+is described.
+
+=== Step 1 - set up your personal fork
+The first step to contributing to one of the log2timeline projects is to set up
+your personal fork.
+
+To set up a personal fork:
+
+image:https://docs.google.com/drawings/d/1QByAJgaBc5IVUfTsXcNnHImUqO0RidaBfnJMzNTSR3M/pub?w=961&h=384[Step 1]
+
+`1`. In github go to e.g.: https://github.com/log2timeline/plaso and select
+"fork". This will create your personal fork.
+
+`2`. Clone your personal fork repository to your development workstation e.g.
+....
+git clone https://github.com/$USERNAME/plaso.git
+....
+
+`3`. Add the log2timeline project as upstream:
+....
+cd plaso
+git remote add upstream https://github.com/log2timeline/plaso.git
+....
+
+`4`. Make sure git is configured correctly:
+....
+git config --global user.name "Full Name"
+git config --global user.email name@example.com
+git config --global push.default matching
+....
+
+`5`. Make sure `.netrc` is configured. For more information see:
+https://gist.github.com/technoweenie/1072829
+
+=== Step 2 - Start a new feature branch
+Every code change is stored in a separate feature branch:
+
+image:https://docs.google.com/drawings/d/1UoE1eYii-9ofnyuqG0ZtB67WpL4xYA3NMJ0IkRRWoCA/pub?w=960&h=720[Step 2]
+
+`1.` Make sure the master branch of your fork is synced with upstream:
+....
+git checkout master && git fetch upstream && git pull --rebase upstream master && git push -f
+....
+
+`2.` Create a feature branch:
+....
+git checkout -b feature
+....
+
+`3.` Make the necessary code changes, commit them to your feature branch and upload them to your fork:
+....
+git push --set-upstream origin feature
+....
+
+=== Step 3 - Making changes
+Make your changes to the code and make sure to push them to the feature branch
+of your fork.
+
+Commit all code changes to your feature branch and upload them:
+....
+git push
+....
+
+=== Step 4 - Start a code review
+Once you think your changes are ready, you start the review process.
+
+image:https://docs.google.com/drawings/d/19cuQJOD7vK6EsBpW7SpyD6It3xtnYPhCdMHqaxOkgSg/pub?w=960&h=720[Step 3]
+
+`1.` Commit all code changes and upload them:
+....
+git push
+....
+
+`2.` Run the review script to create a new code review:
+....
+./utils/review.py create
+....
+
+The script performs the following steps:
+
+* runs the linter
+* runs the unit tests
+* checks if your local clone is up to date with the upstream/master and updates
+if necessary by running: `git pull --rebase upstream master`
+* uploads the diff with upstream/master to codereview.appspot.com
+* creates a github pull request (PR)
+* mails the maintainers
+* creates a review file in `./review/`
+
+[NOTE]
+The diff sent to codereview.appspot.com is relative to the state of
+upstream/master in your local git repository. The review script will run
+`git fetch upstream` to make sure the state is up to date. An alternative
+diffbase can be define by specifying the `--diffbase` parameter e.g.
+`./utils/review.py --diffbase=origin/feature create`.
+
+`3.` The pull request will trigger automated testing. You can see the status of
+your pull request on the plaso project site:
+https://github.com/log2timeline/plaso/pulls
+
+=== Step 5 - Code review
+The code reviewer will:
+
+* check the status of the pull request on the github project page e.g.
+https://github.com/log2timeline/plaso/pull/
+
+If tests are broken (and it is due to the CL) the reviewer will ask the
+contributor fix this.
+
+* comment on the changes on: https://codereview.appspot.com/[codereview.appspot.com]
+
+=== Step 6 - Update code review
+The process of updating a code reviews is very similar to that of starting a
+code review.
+
+`1.` Commit all code changes and upload them:
+....
+git push
+....
+
+`2.` Run the review script to update the code review:
+....
+./utils/review.py update
+....
+
+The script performs the following steps:
+
+* determines the codereview.appspot.com issue number from the corresponding
+review file in `./reviews/`
+* runs the linter
+* runs the unit tests
+* checks if your local clone is up to date with the upstream/master and updates
+if necessary by running: `git pull --rebase upstream master`
+* uploads the diff with upstream/master to codereview.appspot.com
+* mails the maintainers
+
+`3.` Any update to the feature branch while there is a PR will trigger the
+automated testing.
+
+=== Step 7 - Merging the code review with upstream
+After the review is done the reviewer will merge the CL and submit it to upstream.
+
+[NOTE]
+Only project maintainers need to perform this step.
+
+image:https://docs.google.com/drawings/d/1KpX22NbgTLp6NFkrAUGppFajI4MTkrACUbiEAOO4Vv4/pub?w=960&h=720[Step 7]
+
+`1.` Run the review script to merge the code review:
+....
+./utils/review.py merge CODEREVIEW ORGANIZATION:BRANCH
+....
+
+Where:
+
+* `CODEREVIEW` is the code review (CR) or change list (CL) on
+codereview.appspot.com
+* `ORGANIZATION:BRANCH` is the github organization, typically the username, and
+the name of the feature branch
+
+The script performs the following steps:
+
+* checks if the maintainer's local clone is up to date with the orgin/master and
+updates if necessary by running: `git pull`
+* pulls in the changes from the feature branch by runing:
+`git pull --squash https://github.com/$USERNAME/plaso.git $BRANCH`
+* updates the API documentation
+* updates the version information
+* runs the linter
+* runs the unit tests
+* commits the changes under the name of the contributor and pushes the
+changes to upstream
+
+=== Step 8 - Closing a code review
+After the CL has been merged the contributor can remove the feature branch and close the codereview.
+
+image:https://docs.google.com/drawings/d/1XV0oxJDlJ8b6k7WLT8CrxHt39dYWS72u7M2bzAQnrEM/pub?w=960&h=720[Step 8]
+
+`1.` Run the review script to close the code review:
+....
+./utils/review.py close BRANCH
+....
+
+Where:
+
+* `BRANCH` is the name of the feature branch
+
+The script performs the following steps:
+
+* Removes the feature branch from your local clone and your online fork
+(origin). This triggers the PR to close.
+* Closes the code review on codereview.appspot.com
+* Removes the review file in `./reviews`
+
+== Previous code review process
+In the previous version of the plaso code review process we used Rietveld
+(codereview.appspot.com) for code reviews. Rietveld provides a Python script
+named upload.py to upload code diffs to codereview.appspot.com. Though it has
+git support, Rietveld was build around svn and therefore does not entirely
+match a git-based workflow.
+
+Several utility scripts have been built around upload.py to make the code
+review process more user friendly.
+
+=== Need for change
+
+* current solution requires all contributors to have commit access
+** not all have enabled 2 factor authentication
+** additional administrative burden
+** larger risk of a commit messing up master repo
+* want automated testing on code reviews
+* utility scripts do not support the Windows operating system
+
+=== Alternatives
+
+* github PR review; several objections:
+** github makes a mess of the commit history
+** very slow on large reviews
+** unable to track multiple patch sets easily
+* reviewable.io; improvement over github PR review
+** has patch set support
+** looks nice but UX unclear
+
+So decision to stick with Rietveld and fake integrations.
+
+:numbered!:
+[appendix]
+== Review file
+
+A review file has the name of the corresponding feature branch e.g. `myfeature`.
+
+It currently consists of a single number e.g.
+....
+285170043
+....
+
+This number is the corresponding code review issue on codereview.appspot.com.
+
+[NOTE]
+The format of the review file is subject to change. There are ideas to add
+the diffbase and other code review relevant information.
+
