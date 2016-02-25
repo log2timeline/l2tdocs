@@ -39,13 +39,9 @@ in the "LICENSE" file.
 |===
 
 :numbered:
-== Introduction
-The plaso review process was in need of some revision to allow us to use the
-continuous integration (CI) testing functionality of github.
-
 == Code review process
-
-* Step 1 - set up your personal fork
+In the next paragraphs the review process of the log2timeline projects as plaso
+is described.
 
 === Step 1 - set up your personal fork
 The first step to contributing to one of the log2timeline projects is to set up
