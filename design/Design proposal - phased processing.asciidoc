@@ -108,22 +108,13 @@ tracks the overall processing status in the main storage file (or equivalent).
 then locally.
 
 The "foreman" regulary polls the "workers" for processing status and results.
+The "foreman" is responsible for tracking the overall processin status. The
+processing status is tracked persistently and allow us to introduce functionality
+to resume processing when it was stopped.
 
 image:https://docs.google.com/drawings/d/1i8u_vaj0ALDP-2mGGUw81uxUQ0L49F4tTj5cnxGF3Rw/pub?w=960&h=720[Desired situation]
 
-A task can be one of the following actions:
-
-* Determine the files to process. This includes determining if the file is
-a known archive file or compressed stream file.
-* Calculate a digest hash the content of the file.
-* Extract events from the file. This includes determining if the file has
-a known format and pre-select the appropriate parser.
-
 ==== Additional features
-
-* Since the status of the tasks is tracked persistently this could allow us to
-introduce functionality to resume processing when processing was stopped
-
 Over the last few year the processing model of plaso log2timeline has changed
 from a "brute force" all parsers on the source data to a more sophisticated
 approach where preselection is done based on format information e.g. header and
@@ -235,9 +226,9 @@ by the "foreman"
 
 == Notes
 
-*TODO add multi-volume support in the preprocessor*
+Steps
 
-*TODO: turn preprocessing into a multi processable "phase" as well?*
+* merge storage writer process into foreman
 
 :numbered!:
 [appendix]
