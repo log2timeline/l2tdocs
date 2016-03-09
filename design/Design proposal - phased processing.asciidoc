@@ -159,7 +159,7 @@ the main storage
   e. Apply file entry filters e.g. path or filename exclusion e.g. mark path
 specifications as excluded from content processing
 3. Determine system information and other pre-processing information like
-codepage, timezone, date and time formats, etc.
+codepage, timezone, date and time formats, etc. (context scan)
   a. Determine the data streams that each worker is going to process. Split
 the load over the workers based on e.g. data stream size and content type.
 Reduce the data streams to be processed e.g. skip processing data streams that
@@ -173,12 +173,27 @@ known signature e.g. yara
   e. Possible future addition is to extract strings for the data stream
   f. Store the extracted data stream contents in the worker specific storage
 
-Instead of relying on persisent queues the "foreman" sends the "worker" a task
-that contains a batch of path specifications to process. The "foreman"
-periodically polls the status of the "worker" and retrieves the worker specific
-data. The "foreman" merges the worker specific data with the mail storage.
-If a "worker" becomes unresponsive the "foreman" re-issues the task to another
-worker.
+In this design the "foreman" is responsible for phase 1 and communication with
+the "workers". Instead of relying on persisent queues the "foreman" sends the
+"worker" a task that contains a batch of path specifications to process. The
+"foreman" periodically polls the status of the "worker" and retrieves a status
+update and so far newly extracted results. The "foreman" merges the worker
+specific data with the mail storage. If a "worker" becomes unresponsive the
+"foreman" re-issues the task to another worker.
+
+[cols="5,1,1,1",options="header"]
+|===
+| Activity | Phase | Owner (current) | Owner (new)
+| Source scan | 1 | foreman | foreman
+| File system scan | 2 | foreman | workers
+| Context scan | 3 | foreman | workers
+| Content processing | 4 | workers | workers
+| Issueing tasks | administrative | foreman | foreman
+| Polling for status | administrative | foreman | foreman
+| Polling for extracted results | administrative | storage writer | foreman
+| Writing to the storage | administrative | storage writer | foreman
+| Status update to user | administrative | foreman | foreman
+|===
 
 === Required steps
 
@@ -190,7 +205,7 @@ the different processes
   a. Store additional information e.g. path specifications
   b. Use the plaso storage file (or equivalent) to track processing status
 4. Change preprocessing phase and add multi-volume support
-  a. Change the preprocessing object also in-storage
+  a. Change the way preprocessing information is stored
 5. Extend the processing phase with content scanning
 
 ==== Task
