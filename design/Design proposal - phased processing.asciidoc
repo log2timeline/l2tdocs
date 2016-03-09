@@ -6,11 +6,10 @@
 :numbered!:
 [abstract]
 == Summary
-Plaso log2timeline is an application to extract events from various files found
-on a typical computer system. The multi process extraction approach used in plaso
-version 1.4 and earlier adds extensive complexity to the codebase. This
-proposal contains a design for a phased processing approach that should reduce
-the complexity and related errors.
+log2timeline.py is an application to extract events from various files found on
+a typical computer system. This proposal contains a design for a phased
+processing approach that should reduce the complexity and related errors in the
+extraction process.
 
 [preface]
 == Document information
@@ -18,7 +17,7 @@ the complexity and related errors.
 [cols="1,5"]
 |===
 | Author(s): | Joachim Metz <joachim.metz@gmail.com>
-| Abstract: | Design proposal for phased processing in plaso
+| Abstract: | Design proposal for phased processing in log2timeline.py
 | Classification: | Public
 | Keywords: | Design proposal, Phased processing, Plaso
 | Status: | Draft
@@ -37,17 +36,17 @@ in the "LICENSE" file.
 
 :numbered:
 == Introduction
-Plaso log2timeline is an application to extract events from various files found
-on a typical computer system.
+log2timeline.py is an application to extract events from various files found on 
+a typical computer system.
 
 === Current situation
-Plaso log2timeline currently support 2 modes of operation namely:
+log2timeline.py currently support 2 modes of operation namely:
 
 * single process extraction
 * multi process extraction
 
 ==== Single process extraction
-In single processing mode plaso log2timeline preforms the following steps:
+In single processing mode log2timeline.py performs the following steps:
 
 1. Preprocess the input (or source) data
   a. Determine if the source is a storage media device or image, a single file
@@ -63,30 +62,31 @@ etc.
   c. Determine if the file has a known format and pre-select the appropriate
 parser
   d. Extract events from the file
-4. Write extracted events to the plaso storage file
+4. Write extracted events to the storage file
 
 Steps 2, 3 and 4 are repeated until there are no more files remaining to be
 processed.
 
 ==== Multi process extraction
-In multi process extraction mode plaso log2timeline performs steps 2, 3 and 4
+In multi process extraction mode log2timeline.py performs steps 2, 3 and 4
 are in parallel, where there is:
 
 * one "collector" process to determine the files to process
 * multiple "worker" processes to process the content of the files
-* one "storage writer" process to write extracted events to the plaso storage
-file
+* one "storage writer" process to write extracted events to the storage file
+* one "foreman" process that manages the other processes and interacts with
+the user e.g. providing status updates.
 
 image:https://docs.google.com/drawings/d/1K09QjUh3Jjw7U0MmecazwzVF2INDCMCCJPfdurEeKt8/pub?w=960&h=720[Current situation]
 
-Various issues in previous plaso releases have shown that:
+Various issues in previous log2timeline.py releases have shown that:
 
 * The current approach makes it hard to tell when processing is completed.
 * The current approach makes it hard to recover from error condititions, e.g.
 workers dying.
 * That there are several conditions for potential deadlocks (indicated in red).
 
-In short the current approach is unnecessary complex and fragile.
+In short the current approach is unnecessarily complex and fragile.
 
 === Desired situation
 In the desired situation multi process extraction takes the following approach:
@@ -97,8 +97,8 @@ tracks the overall processing status in the main storage file (or equivalent).
 * Multiple "workers" process listen on for incoming processing tasks and queue
 then locally.
 
-The "foreman" regulary polls the "workers" for processing status and results.
-The "foreman" is responsible for tracking the overall processin status. The
+The "foreman" regularly polls the "workers" for processing status and results.
+The "foreman" is responsible for tracking the overall processing status. The
 processing status is tracked persistently and allow us to introduce functionality
 to resume processing when it was stopped.
 
@@ -113,14 +113,13 @@ This approach has the following advantages:
 * reduction of possible abort and clean up code paths.
 
 ==== Additional features
-Over the last few year the processing model of plaso log2timeline has changed
-from a "brute force" all parsers on the source data to a more sophisticated
-approach where preselection is done based on format information e.g. header and
-footer signatures. In the 1.3 content hashing was added and in 1.4 additional
-filters were added to prevent plaso log2timeline from unnecessary parsing
-certain files identified as gzip compressed files. A secondary idea of the
-phased processing is to design this pre-extraction processing in a more
-sustainable way so we can add:
+Over the last few year the processing model of log2timeline.py has changed from
+a "brute force" all parsers on the source data to a more sophisticated approach
+where preselection is done based on format information e.g. header and footer
+signatures. In the 1.3 content hashing was added and in 1.4 additional filters
+were added to prevent from unnecessarily parsing certain files identified as
+gzip compressed files. A secondary idea of the phased processing is to design
+this pre-extraction processing in a more sustainable way so we can add:
 
 * white, grey and black listing based on digest hashes;
 * event tagging based on signatures, e.g. yara;
@@ -139,7 +138,7 @@ in-band. It should have the following advantages on the current situation:
 
 * no need to rely on complex out-of-band logic to determine end of input
 and end of processing messages.
-* reliably compare the number of items generated by a producer an processed
+* reliably compare the number of items generated by a producer and processed
 by consumers. The numbers on both sides of a queue must be the same.
 * reduce the need for IPC mechanism to prevent premature termination e.g.
 IO sync on close.
@@ -195,7 +194,7 @@ the different processes
 5. Extend the processing phase with content scanning
 
 ==== Task
-A taks consists of:
+A task consists of:
 
 * instruction; the instruction and arguments e.g.
 "hash data stream defined by path spec" or
