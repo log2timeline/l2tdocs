@@ -91,16 +91,16 @@ In short the current approach is unnecessarily complex and fragile.
 === Desired situation
 In the desired situation multi process extraction takes the following approach:
 
-* One "foreman" (or "main") process has the role of issueing tasks to the
+* One "foreman" (or "main") process has the role of issuing tasks to the
 "workers". The "foreman" monitors the status of the "workers" processes and
 tracks the overall processing status in the main storage file (or equivalent).
-* Multiple "workers" process listen on for incoming processing tasks and queue
-then locally.
+* Multiple "worker" process listen on a queue for incoming processing tasks and
+queue then locally.
 
 The "foreman" regularly polls the "workers" for processing status and results.
 The "foreman" is responsible for tracking the overall processing status. The
-processing status is tracked persistently and allow us to introduce functionality
-to resume processing when it was stopped.
+processing status is tracked persistently and allows the introduction of
+functionality to resume processing when it was stopped.
 
 image:https://docs.google.com/drawings/d/1i8u_vaj0ALDP-2mGGUw81uxUQ0L49F4tTj5cnxGF3Rw/pub?w=960&h=720[Desired situation]
 
@@ -124,8 +124,10 @@ this pre-extraction processing in a more sustainable way so we can add:
 * white, grey and black listing based on digest hashes;
 * event tagging based on signatures, e.g. yara;
 * extraction of non-timestamp data e.g. strings;
-* remove data duplication in the "event object";
 * per volume system information (former preprocessing object).
+
+In addition the phased approach could allow us to remove data duplication
+in the "event object".
 
 [NOTE]
 The actual implementation of distributed processing approach and yara support
@@ -177,9 +179,9 @@ In this design the "foreman" is responsible for phase 1 and communication with
 the "workers". Instead of relying on persisent queues the "foreman" sends the
 "worker" a task that contains a batch of path specifications to process. The
 "foreman" periodically polls the status of the "worker" and retrieves a status
-update and so far newly extracted results. The "foreman" merges the worker
-specific data with the mail storage. If a "worker" becomes unresponsive the
-"foreman" re-issues the task to another worker.
+update and the, so far, newly extracted results. The "foreman" merges the
+worker specific data with the main storage. If a "worker" becomes unresponsive
+the "foreman" re-issues the task to another worker.
 
 [cols="5,1,1,1",options="header"]
 |===
@@ -188,9 +190,9 @@ specific data with the mail storage. If a "worker" becomes unresponsive the
 | File system scan | 2 | foreman | workers
 | Context scan | 3 | foreman | workers
 | Content processing | 4 | workers | workers
-| Issueing tasks | administrative | foreman | foreman
+| Issuing tasks | administrative | foreman | foreman
 | Polling for status | administrative | foreman | foreman
-| Polling for extracted results | administrative | storage writer | foreman
+| Polling for extracted results | administrative | N/A | foreman
 | Writing to the storage | administrative | storage writer | foreman
 | Status update to user | administrative | foreman | foreman
 |===
@@ -233,7 +235,7 @@ by the "foreman"
 For a distributed processing approach the "worker" could be split into a
 "nanny" and "extraction" process. E.g. if the "extraction" process is
 terminated the "nanny" can respawn the "extraction" process. However the
-"foreman" should still account for the "worker" becomming unresponsive in case
+"foreman" should still account for the "worker" becoming unresponsive in case
 both the "nanny" and "extraction" are terminated.
 
 Have the "foreman" deduplicate and normalize data on merge?
@@ -241,6 +243,11 @@ Have the "foreman" deduplicate and normalize data on merge?
 Use profiling to determine the optimal size of the path specification batches?
 
 Allow to run phases independently for testing?
+
+=== Open questions
+
+* How to provide the workers with preprocessing information?
+* What will be the worker polling interval?
 
 :numbered!:
 [appendix]
@@ -251,6 +258,7 @@ Allow to run phases independently for testing?
 | Version | Author | Date | Comments
 | 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
 | 0.0.2 | Joachim Metz | Febuary 2016 | Additional information.
+| 0.0.3 | Joachim Metz | April 2016 | Changes after review.
 |===
 
 [appendix]
