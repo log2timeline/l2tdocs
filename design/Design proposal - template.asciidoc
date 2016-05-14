@@ -29,7 +29,11 @@ Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included
 in the "LICENSE" file.
 ....
 
-[preface]
+:numbered:
+== Introduction
+
+:numbered!:
+[appendix]
 == Revision history
 [cols="1,1,1,5",options="header"]
 |===
@@ -37,10 +41,6 @@ in the "LICENSE" file.
 | 0.0.1 | John Doe | January 2016 | Initial version based on template.
 |===
 
-:numbered:
-== Introduction
-
-:numbered!:
 [appendix]
 == Appendix
 

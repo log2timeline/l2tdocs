@@ -1,0 +1,268 @@
+= Design proposal - phased processing
+
+:toc:
+:toclevels: 4
+
+:numbered!:
+[abstract]
+== Summary
+log2timeline.py is an application to extract events from various files found on
+a typical computer system. This proposal contains a design for a phased
+processing approach that should reduce the complexity and related errors in the
+extraction process.
+
+[preface]
+== Document information
+
+[cols="1,5"]
+|===
+| Author(s): | Joachim Metz <joachim.metz@gmail.com>
+| Abstract: | Design proposal for phased processing in log2timeline.py
+| Classification: | Public
+| Keywords: | Design proposal, Phased processing, Plaso
+| Status: | Draft
+|===
+
+[preface]
+== License
+....
+Copyright (C) 2016, log2timeline projects maintainers <log2timeline-maintainers@googlegroups.com>
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.3 or any later version
+published by the Free Software Foundation; with no Invariant Sections, no
+Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included
+in the "LICENSE" file.
+....
+
+:numbered:
+== Introduction
+log2timeline.py is an application to extract events from various files found on 
+a typical computer system.
+
+=== Current situation
+log2timeline.py currently support 2 modes of operation namely:
+
+* single process extraction
+* multi process extraction
+
+==== Single process extraction
+In single processing mode log2timeline.py performs the following steps:
+
+1. Preprocess the input (or source) data
+  a. Determine if the source is a storage media device or image, a single file
+or directory.
+  b. Determine if the source data contains an installation of a known operating
+system.
+  c. Determine system settings needed for processing e.g. codepage, timezone,
+etc.
+2. Determine the files to process
+3. Process the content of the files
+  a. Calculate a digest hash the content of the file
+  b. Determine if the file is a known archive file or compressed stream file
+  c. Determine if the file has a known format and pre-select the appropriate
+parser
+  d. Extract events from the file
+4. Write extracted events to the storage file
+
+Steps 2, 3 and 4 are repeated until there are no more files remaining to be
+processed.
+
+==== Multi process extraction
+In multi process extraction mode log2timeline.py performs steps 2, 3 and 4
+are in parallel, where there is:
+
+* one "collector" process to determine the files to process
+* multiple "worker" processes to process the content of the files
+* one "storage writer" process to write extracted events to the storage file
+* one "foreman" process that manages the other processes and interacts with
+the user e.g. providing status updates.
+
+image:https://docs.google.com/drawings/d/1K09QjUh3Jjw7U0MmecazwzVF2INDCMCCJPfdurEeKt8/pub?w=960&h=720[Current situation]
+
+Various issues in previous log2timeline.py releases have shown that:
+
+* The current approach makes it hard to tell when processing is completed.
+* The current approach makes it hard to recover from error condititions, e.g.
+workers dying.
+* That there are several conditions for potential deadlocks (indicated in red).
+
+In short the current approach is unnecessarily complex and fragile.
+
+=== Desired situation
+In the desired situation multi process extraction takes the following approach:
+
+* One "foreman" (or "main") process has the role of issuing tasks to the
+"workers". The "foreman" monitors the status of the "workers" processes and
+tracks the overall processing status in the main storage file (or equivalent).
+* Multiple "worker" process listen on a queue for incoming processing tasks and
+queue then locally.
+
+The "foreman" regularly polls the "workers" for processing status and results.
+The "foreman" is responsible for tracking the overall processing status. The
+processing status is tracked persistently and allows the introduction of
+functionality to resume processing when it was stopped.
+
+image:https://docs.google.com/drawings/d/1i8u_vaj0ALDP-2mGGUw81uxUQ0L49F4tTj5cnxGF3Rw/pub?w=960&h=720[Desired situation]
+
+This approach has the following advantages:
+
+* the single and multi processing approaches will be very similar;
+* reduction of the total number of IPC components which can cause dead locks;
+* approach can be used in a distributed manner as well;
+* there is single place to track the processing status;
+* reduction of possible abort and clean up code paths.
+
+==== Additional features
+Over the last few year the processing model of log2timeline.py has changed from
+a "brute force" all parsers on the source data to a more sophisticated approach
+where preselection is done based on format information e.g. header and footer
+signatures. In the 1.3 content hashing was added and in 1.4 additional filters
+were added to prevent from unnecessarily parsing certain files identified as
+gzip compressed files. A secondary idea of the phased processing is to design
+this pre-extraction processing in a more sustainable way so we can add:
+
+* white, grey and black listing based on digest hashes;
+* event tagging based on signatures, e.g. yara;
+* extraction of non-timestamp data e.g. strings;
+* per volume system information (former preprocessing object).
+
+In addition the phased approach could allow us to remove data duplication
+in the "event object".
+
+[NOTE]
+The actual implementation of distributed processing approach and yara support
+are considered out of scope for this document and will be discussed in other
+design proposals.
+
+==== Task-based processing
+Task-based processing is a way to track the status of process input sources
+in-band. It should have the following advantages on the current situation:
+
+* no need to rely on complex out-of-band logic to determine end of input
+and end of processing messages.
+* reliably compare the number of items generated by a producer and processed
+by consumers. The numbers on both sides of a queue must be the same.
+* reduce the need for IPC mechanism to prevent premature termination e.g.
+IO sync on close.
+
+== Design
+The source data is processed in the following phases:
+
+1. Scan the source data and determine the file systems to process
+  a. Store the dfVFS scan tree in the storage
+  b. Ask user for additional input e.g. decryption credentials or Windows
+drive letters
+2. Scan the file systems for file entry data and processable data streams
+  a. Determine if the file is a known archive file or compressed stream file
+  b. Determine if the file has a known format and pre-select the appropriate
+  c. Possible future addition is to determine if files are encrypted
+  d. Store the dfVFS path specifications and extracted file system metadata in
+the main storage
+  e. Apply file entry filters e.g. path or filename exclusion e.g. mark path
+specifications as excluded from content processing
+3. Determine system information and other pre-processing information like
+codepage, timezone, date and time formats, etc. (context scan)
+  a. Determine the data streams that each worker is going to process. Split
+the load over the workers based on e.g. data stream size and content type.
+Reduce the data streams to be processed e.g. skip processing data streams that
+are hard linked.
+4. Process the contents of the data streams
+  a. Calculate a digest hash the content of the file
+  b. Apply data stream content filters e.g. do not process known data streams
+  c. Possible future addition is to scan the contents for the data stream for
+known signature e.g. yara
+  d. Extract events from the data stream
+  e. Possible future addition is to extract strings for the data stream
+  f. Store the extracted data stream contents in the worker specific storage
+
+In this design the "foreman" is responsible for phase 1 and communication with
+the "workers". Instead of relying on persisent queues the "foreman" sends the
+"worker" a task that contains a batch of path specifications to process. The
+"foreman" periodically polls the status of the "worker" and retrieves a status
+update and the, so far, newly extracted results. The "foreman" merges the
+worker specific data with the main storage. If a "worker" becomes unresponsive
+the "foreman" re-issues the task to another worker.
+
+[cols="5,1,1,1",options="header"]
+|===
+| Activity | Phase | Owner (current) | Owner (new)
+| Source scan | 1 | foreman | foreman
+| File system scan | 2 | foreman | workers
+| Context scan | 3 | foreman | workers
+| Content processing | 4 | workers | workers
+| Issuing tasks | administrative | foreman | foreman
+| Polling for status | administrative | foreman | foreman
+| Polling for extracted results | administrative | N/A | foreman
+| Writing to the storage | administrative | storage writer | foreman
+| Status update to user | administrative | foreman | foreman
+|===
+
+=== Required steps
+
+1. Instead of path specification and event object communicate tasks between
+the different processes
+2. Split the storage into a main storage and a worker specific storage
+  a. Change the communication to send status and results in-band
+3. Move the "collector" functionality into the "worker" process
+  a. Store additional information e.g. path specifications
+  b. Use the plaso storage file (or equivalent) to track processing status
+4. Change preprocessing phase and add multi-volume support
+  a. Change the way preprocessing information is stored
+5. Extend the processing phase with content scanning
+
+==== Task
+A task consists of:
+
+* instruction; the instruction and arguments e.g.
+"hash data stream defined by path spec" or
+"collect data streams from file entry"
+* session; possible future addition to allow the workers process multiple
+sessions
+* status; a string containing a status indication
+* results; a list of result objects e.g. serialized event objects or event
+tags
+
+=== Processing session information
+Start with a separate session status file that contains a list of:
+
+* the path specifications within the source
+* the tasks requested for a specific path specification e.g. "hash X", written
+by the "foreman"
+* the tasks completed for a specific path specification, written by the
+"storage writer"
+
+=== Other ideas
+For a distributed processing approach the "worker" could be split into a
+"nanny" and "extraction" process. E.g. if the "extraction" process is
+terminated the "nanny" can respawn the "extraction" process. However the
+"foreman" should still account for the "worker" becoming unresponsive in case
+both the "nanny" and "extraction" are terminated.
+
+Have the "foreman" deduplicate and normalize data on merge?
+
+Use profiling to determine the optimal size of the path specification batches?
+
+Allow to run phases independently for testing?
+
+=== Open questions
+
+* How to provide the workers with preprocessing information?
+* What will be the worker polling interval?
+
+:numbered!:
+[appendix]
+== Revision history
+
+[cols="1,1,1,5",options="header"]
+|===
+| Version | Author | Date | Comments
+| 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
+| 0.0.2 | Joachim Metz | Febuary 2016 | Additional information.
+| 0.0.3 | Joachim Metz | April 2016 | Changes after review.
+|===
+
+[appendix]
+== References
+
+https://docs.google.com/document/d/1ZdK5TpUfHFKaA5Xi6w-N_FPSubOdRJhhgOqmuZkTX3Y/edit#heading=h.25kh82j17av6[Process management and queuing]
+
