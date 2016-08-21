@@ -77,7 +77,7 @@ are in parallel, where there is:
 * one "foreman" process that manages the other processes and interacts with
 the user e.g. providing status updates.
 
-image:https://docs.google.com/drawings/d/1K09QjUh3Jjw7U0MmecazwzVF2INDCMCCJPfdurEeKt8/pub?w=960&h=720[Current situation]
+image:https://raw.githubusercontent.com/log2timeline/l2tdocs/master/images/Phased%20processing%20-%20current%20situation.png[Current situation]
 
 Various issues in previous log2timeline.py releases have shown that:
 
@@ -102,7 +102,7 @@ The "foreman" is responsible for tracking the overall processing status. The
 processing status is tracked persistently and allows the introduction of
 functionality to resume processing when it was stopped.
 
-image:https://docs.google.com/drawings/d/1i8u_vaj0ALDP-2mGGUw81uxUQ0L49F4tTj5cnxGF3Rw/pub?w=960&h=720[Desired situation]
+image:https://raw.githubusercontent.com/log2timeline/l2tdocs/master/images/Phased%20processing%20-%20desired%20situation.png[Desired situation]
 
 This approach has the following advantages:
 
