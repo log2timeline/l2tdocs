@@ -1,4 +1,4 @@
-This page contains information relevant to plaso maintainers.
+This page contains information relevant to maintainers of the log2timeline projects.
 
 * [Mailing list](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#mailing-list)
 * [Maintainer guidelines](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#maintainer-guidelines)
@@ -115,7 +115,7 @@ Change to the plaso source directory and create a distribution package by runnin
 ./config/macosx/make_dist.sh
 ```
 
-This will create a file named: plaso-${VERSION}_macosx-10.11.dmg at the same level as the plaso source directory.
+This will create a file named: `plaso-${VERSION}_macosx-10.11.dmg` at the same level as the plaso source directory.
 
 Note that you can pass this script an additional version suffix e.g. rc1.
 ```
