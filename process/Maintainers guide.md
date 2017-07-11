@@ -1,17 +1,17 @@
 This page contains information relevant to plaso maintainers.
 
-* [Mailing list](https://github.com/log2timeline/plaso/wiki/Maintainers-guide#mailing-list)
-* [Maintainer guidelines](https://github.com/log2timeline/plaso/wiki/Maintainers-guide#maintainer-guidelines)
-* [Maintainer tools](https://github.com/log2timeline/plaso/wiki/Maintainers-guide#maintainer-tools)
+* [Mailing list](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#mailing-list)
+* [Maintainer guidelines](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#maintainer-guidelines)
+* [Maintainer tools](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#maintainer-tools)
 * Generating plaso test files
 * Generating API docs with Sphinx-doc
-* [Generating plaso wiki pages](https://github.com/log2timeline/plaso/wiki/Maintainers-guide#generating-plaso-wiki-pages)
-* [Creating a packaged release](https://github.com/log2timeline/plaso/wiki/Maintainers-guide#creating-a-packaged-release)
+* [Generating plaso wiki pages](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#generating-plaso-wiki-pages)
+* [Creating a packaged release](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#creating-a-packaged-release)
   * Mac OS-X packaged release
   * Ubuntu source dpkg for gift PPA
   * Windows packaged release
-  * [PyPI](https://github.com/log2timeline/plaso/wiki/Maintainers-guide#pypi)
-* [Updating plaso's docker image](https://github.com/log2timeline/plaso/wiki/Maintainers-guide#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
+  * [PyPI](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#pypi)
+* [Updating plaso's docker image](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
 
 ## Mailing list
 
@@ -101,7 +101,7 @@ PYTHONPATH=plaso plaso/tools/log2timeline.py --use-markdown --parsers list > pla
 Commit and push the changes to the wiki pages.
 
 ## Creating a packaged release
-### Mac OS-X packaged release
+### macOS packaged release
 
 Use l2tdevtools to download the .dmg files:
 ```
@@ -115,7 +115,7 @@ Change to the plaso source directory and create a distribution package by runnin
 ./config/macosx/make_dist.sh
 ```
 
-This will create a file named: plaso-${PLASO_VERSION}_macosx-10.11.dmg at the same level as the plaso source directory.
+This will create a file named: plaso-${VERSION}_macosx-10.11.dmg at the same level as the plaso source directory.
 
 Note that you can pass this script an additional version suffix e.g. rc1.
 ```
