@@ -1,17 +1,17 @@
 This page contains information relevant to maintainers of the log2timeline projects.
 
-* [Mailing list](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#mailing-list)
-* [Maintainer guidelines](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#maintainer-guidelines)
-* [Maintainer tools](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#maintainer-tools)
+* [Mailing list](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#mailing-list)
+* [Maintainer guidelines](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#maintainer-guidelines)
+* [Maintainer tools](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#maintainer-tools)
 * Generating plaso test files
 * Generating API docs with Sphinx-doc
-* [Generating plaso wiki pages](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#generating-plaso-wiki-pages)
-* [Creating a packaged release](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#creating-a-packaged-release)
+* [Generating plaso wiki pages](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#generating-plaso-wiki-pages)
+* [Creating a packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#creating-a-packaged-release)
   * Mac OS-X packaged release
   * Ubuntu source dpkg for gift PPA
   * Windows packaged release
-  * [PyPI](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#pypi)
-* [Updating plaso's docker image](https://github.com/log2timeline/l2tdocs/blob/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
+  * [PyPI](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#pypi)
+* [Updating plaso's docker image](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
 
 ## Mailing list
 
@@ -151,85 +151,6 @@ Upload to the testing track of gift:
 ```
 dput ppa:gift/testing python-plaso_1.2.1-dev-20150507-1ppa1~trusty_source.changes
 ```
-
-### Windows packaged release
-
-To create a Windows packaged release from the development release you also need:
-
-* PyInstaller
-
-#### PyInstaller
-
-Download the latest source from:
-```
-git clone -b master git://github.com/pyinstaller/pyinstaller.git
-```
-
-**Note that setup.py build and install is currently disabled, so we need to run PyInstaller from its download directory.**
-
-##### Rebuilding the PyInstaller bootloader
-
-By default PyInstaller is code compatible with Windows XP SP2 (5.1). If you need to support a Windows version earlier you'll need to recompile the PyInstaller "bootloader" with Visual Studio 2008. Note that Visual Studio 2010 is not compatible with Windows 2000.
-
-```
-cd PyInstaller\bootloader
-C:\Python27\python.exe waf configure build install
-```
-
-##### Microsoft Visual C++ 2010 Redistributable Package
-
-If you're building with Visual Studio note that for some reason PyInstaller does not include the Microsoft Visual C++ 2010 run-time DLLs you can find them here:
-
-* [Microsoft Visual C++ 2010 Redistributable Package (x86)](http://www.microsoft.com/en-us/download/details.aspx?id=5555)
-* [Microsoft Visual C++ 2010 Redistributable Package (x64)](http://www.microsoft.com/en-us/download/details.aspx?id=14632)
-
-#### Preparations
-
-If you are intending to distribute the packaged release make sure to do the following steps:
-
-`1`. Make sure the dependencies are up to date.
-
-`2`. Remove code that cannot be redistributed due to a license restriction, by running:
-```
-sh utils/prep_dist.sh
-```
-
-**Note that you'll need to run this under Cygwin or equivalent.**
-
-`3`. Distribute a copy of:
-```
-AUTHORS
-ACKNOWLEDGEMENT
-LICENSE
-config\licenses\*
-```
-
-#### Packaging
-
-First check if the PyInstaller build script: config\windows\make.bat is configured correctly for your build environment.
-
-From the plaso source directory run the following commands:
-
-To build plaso with PyInstaller run:
-```
-config\windows\make.bat
-```
-
-This will create sub directories for each of the tools under dist.
-
-To merge all the sub directories into one run:
-```
-config\windows\make_dist.bat
-```
-
-This will create: dist\plaso
-
-To do a very rudimentary test to see if the packaged binaries work run:
-```
-config\windows\make_check.bat
-```
-
-And finally create a zip archive of: dist\plaso
 
 ### PyPI
 
