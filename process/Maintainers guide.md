@@ -7,9 +7,9 @@ This page contains information relevant to maintainers of the log2timeline proje
 * Generating API docs with Sphinx-doc
 * [Generating plaso wiki pages](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#generating-plaso-wiki-pages)
 * [Creating a packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#creating-a-packaged-release)
-  * Mac OS-X packaged release
-  * Ubuntu source dpkg for gift PPA
-  * Windows packaged release
+  * [macOS packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#macos-packaged-release)
+  * [Ubuntu source dpkg for GIFT PPA](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20PPA.md)
+  * [Windows packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Packaging%20with%20pyinstaller.md)
   * [PyPI](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#pypi)
 * [Updating plaso's docker image](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
 
@@ -25,34 +25,7 @@ Maintainers mailing list: log2timeline-maintainers@googlegroups.com
 
 If you intend to help maintain on plaso you'll also need to install the following tools:
 
-* Sphinx-doc
-
-### Sphinx-doc
-#### Fedora Core
-
-To install sphinx-doc on Fedora Core run:
-```
-sudo yum install python-sphinx-doc
-```
-
-### Mac OS -X
-
-To install sphinx-doc on Mac OS-X run:
-
-**TODO: add description.**
-
-### Ubuntu
-
-To install sphinx-doc on Ubuntu run:
-```
-sudo apt-get install python-sphinx
-```
-
-### Windows
-
-To install sphinx-doc on Windows run:
-
-**TODO: add description.**
+* [Sphinx-doc](https://github.com/log2timeline/l2tdocs/blob/master/process/Installing%20sphinx-doc.md)
 
 ## Generating plaso test files
 
@@ -117,41 +90,6 @@ Change to the plaso source directory and create a distribution package by runnin
 
 This will create a file named: `plaso-${VERSION}_macosx-10.11.dmg` at the same level as the plaso source directory.
 
-Note that you can pass this script an additional version suffix e.g. rc1.
-```
-./config/macosx/make_dist.sh rc1
-```
-
-### Ubuntu source dpkg for gift PPA
-
-Copy the dpkg files to a debian sub directory:
-```
-mkdir debian && cp -r config/dpkg/* debian
-```
-
-Work around for a Unicode bug on launchpad:
-```
-mv test_data/ímynd.dd test_data/image.dd
-IFS="
-"; for FILE in `grep -r ímynd.dd | sed 's/:.*$//'`; do sed 's/ímynd.dd/image.dd/g' -i $FILE; done
-```
-Update the dpkg changelog:
-```
-export NAME="Log2Timeline";
-export EMAIL="log2timeline-dev@googlegroups.com";
-dch -v 1.2.1-dev-20150507-1ppa1~trusty --distribution trusty --urgency low "Modifications for PPA release."
-```
-
-Build a source package:
-```
-debuild -S -sa
-```
-
-Upload to the testing track of gift:
-```
-dput ppa:gift/testing python-plaso_1.2.1-dev-20150507-1ppa1~trusty_source.changes
-```
-
 ### PyPI
 
 Set up `.pypirc` to have both `pypitest` and `pypi`. Also see: [How to submit a package to PyPI](http://peterdowns.com/posts/first-time-with-pypi.html)
@@ -202,3 +140,4 @@ docker login   # Ask log2timeline-maintainers@googlegroups.com for the credentia
 docker push log2timeline/plaso:1.5.1
 docker push log2timeline/plaso:latest
 ```
+
