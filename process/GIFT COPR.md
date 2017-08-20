@@ -20,3 +20,11 @@ To upload to the testing track of GIFT:
 copr-cli build @gift/testing --nowait dist/plaso-1.5.1-1.src.rpm
 ```
 
+### Determining which source rpm files to upload
+
+To determine which source rpm files are newer or are not present on GIFT run:
+
+```
+PYTHONPATH=. ./tools/manage.py copr-diff-testing
+```
+
