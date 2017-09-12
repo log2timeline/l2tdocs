@@ -3,7 +3,7 @@ The log2timeline projects distribute binary packages for Ubuntu via the
 
 ### Building source dpkg files
 
-To build source dpkg file use [l2tdevtools](https://github.com/log2timeline/l2tdevtools)
+To build source dpkg files use [l2tdevtools](https://github.com/log2timeline/l2tdevtools)
 with build target: [dpkg-source](https://github.com/log2timeline/l2tdevtools/wiki/Build-script#build-target-dpkg-source).
 
 Alternatively build a source dpkg file manually with:
