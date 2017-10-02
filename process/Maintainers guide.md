@@ -119,7 +119,7 @@ We have a repository on Docker's hub : [https://hub.docker.com/r/log2timeline/pl
 
 ```
 cd config/docker/
-docker build -f plaso-from-ppa.dockerfile .
+docker build --no-cache -f plaso-from-ppa.dockerfile .
 <... wait ... wait ...>
 Successfully built f0edcb57611b
 ```
