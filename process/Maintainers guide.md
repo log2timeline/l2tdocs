@@ -7,6 +7,7 @@ This page contains information relevant to maintainers of the log2timeline proje
 * Generating API docs with Sphinx-doc
 * [Generating plaso wiki pages](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#generating-plaso-wiki-pages)
 * [Creating a packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#creating-a-packaged-release)
+  * [Fedora source rpm for GIFT COPR](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20COPR.md)
   * [macOS packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#macos-packaged-release)
   * [Ubuntu source dpkg for GIFT PPA](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20PPA.md)
   * [Windows packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Packaging%20with%20pyinstaller.md)
