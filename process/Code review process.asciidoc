@@ -22,7 +22,7 @@ Description of the code review process using by the log2timeline projects
 [preface]
 == License
 ....
-Copyright (C) 2016, log2timeline projects maintainers <log2timeline-maintainers@googlegroups.com>
+Copyright (C) 2016-2017, log2timeline projects maintainers <log2timeline-maintainers@googlegroups.com>
 Permission is granted to copy, distribute and/or modify this document under the
 terms of the GNU Free Documentation License, Version 1.3 or any later version
 published by the Free Software Foundation; with no Invariant Sections, no
@@ -36,6 +36,7 @@ in the "LICENSE" file.
 |===
 | Version | Author | Date | Comments
 | 0.0.1 | Joachim Metz | January 2016 | Initial version based on template.
+| 0.0.2 | Joachim Metz | November 2017 | Changes related to review script moving to l2tdevtools.
 |===
 
 :numbered:
@@ -116,7 +117,7 @@ git push
 
 `2.` Run the review script to create a new code review:
 ....
-./utils/review.py create
+PYTHONPATH=../l2tdevtools ../l2tdevtools/tools/review.py create
 ....
 
 The script performs the following steps:
@@ -135,7 +136,7 @@ The diff sent to codereview.appspot.com is relative to the state of
 upstream/master in your local git repository. The review script will run
 `git fetch upstream` to make sure the state is up to date. An alternative
 diffbase can be define by specifying the `--diffbase` parameter e.g.
-`./utils/review.py --diffbase=origin/feature create`.
+`PYTHONPATH=../l2tdevtools ../l2tdevtools/tools/review.py --diffbase=origin/feature create`.
 
 `3.` The pull request will trigger automated testing. You can see the status of
 your pull request on the plaso project site:
@@ -163,7 +164,7 @@ git push
 
 `2.` Run the review script to update the code review:
 ....
-./utils/review.py update
+PYTHONPATH=../l2tdevtools ../l2tdevtools/tools/review.py update
 ....
 
 The script performs the following steps:
@@ -190,7 +191,7 @@ image:https://raw.githubusercontent.com/log2timeline/l2tdocs/master/images/Code%
 
 `1.` Run the review script to merge the code review:
 ....
-./utils/review.py merge CODEREVIEW ORGANIZATION:BRANCH
+PYTHONPATH=../l2tdevtools ../l2tdevtools/tools/review.py merge CODEREVIEW ORGANIZATION:BRANCH
 ....
 
 Where:
@@ -220,7 +221,7 @@ image:https://raw.githubusercontent.com/log2timeline/l2tdocs/master/images/Code%
 
 `1.` Run the review script to close the code review:
 ....
-./utils/review.py close BRANCH
+PYTHONPATH=../l2tdevtools ../l2tdevtools/tools/review.py close BRANCH
 ....
 
 Where:
