@@ -86,10 +86,10 @@ rm -f build/hachoir*.dmg
 Change to the plaso source directory and create a distribution package by running:
 ```
 ./utils/prep_dist.sh
-./config/macosx/make_dist.sh
+./config/macos/make_dist.sh
 ```
 
-This will create a file named: `plaso-${VERSION}_macosx-10.11.dmg` at the same level as the plaso source directory.
+This will create a file named: `plaso-${VERSION}_macos-10.11.dmg` at the same level as the plaso source directory.
 
 ### PyPI
 
