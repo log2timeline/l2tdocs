@@ -54,31 +54,23 @@ LICENSE
 config\licenses\*
 ```
 
+**Note that make_release.ps1 will handle steps 2 and 3.**
+
 ## Packaging
 
-First check if the PyInstaller build script: config\windows\make.bat is
+First check if the PyInstaller build script: config\windows\make_release.ps1 is
 configured correctly for your build environment.
 
 From the plaso source directory run the following commands:
 
 To build plaso with PyInstaller run:
 ```
-config\windows\make.bat
+config\windows\make_release.ps1
 ```
 
-This will create sub directories for each of the tools under dist.
-
-To merge all the sub directories into one run:
-```
-config\windows\make_dist.bat
-```
-
-This will create: dist\plaso
+This will create: plaso-<version>-<architecture>.zip
 
 To do a very rudimentary test to see if the packaged binaries work run:
 ```
 config\windows\make_check.bat
 ```
-
-And finally create a zip archive of: dist\plaso
-
