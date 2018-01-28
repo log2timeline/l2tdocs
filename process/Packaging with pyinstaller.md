@@ -65,7 +65,8 @@ From the plaso source directory run the following commands:
 
 Install dependencies with l2tdevtools:
 ```
-PYTHONPATH=. tools\update.py
+set PYTHONPATH=.
+C:\Python27\python.exe tools\update.py
 ```
 
 Build plaso with PyInstaller:
@@ -83,7 +84,8 @@ config\windows\make_check.bat
 ### Packaging win32 on amd64
 
 ```
-PYTHONPATH=. tools\update.py --machine-type x86
+set PYTHONPATH=.
+C:\Python27 (x86)\python.exe tools\update.py --machine-type x86
 ```
 
 ```
