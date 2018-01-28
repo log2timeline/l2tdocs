@@ -63,14 +63,29 @@ configured correctly for your build environment.
 
 From the plaso source directory run the following commands:
 
-To build plaso with PyInstaller run:
+Install dependencies with l2tdevtools:
+```
+PYTHONPATH=. tools\update.py
+```
+
+Build plaso with PyInstaller:
 ```
 config\windows\make_release.ps1
 ```
 
-This will create: plaso-<version>-<architecture>.zip
+This will create: `plaso-<version>-<architecture>.zip`
 
 To do a very rudimentary test to see if the packaged binaries work run:
 ```
 config\windows\make_check.bat
+```
+
+### Packaging win32 on amd64
+
+```
+PYTHONPATH=. tools\update.py --machine-type x86
+```
+
+```
+config\windows\make_release.ps1 -Architecture win32
 ```
