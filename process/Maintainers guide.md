@@ -93,7 +93,25 @@ This will create a file named: `plaso-${VERSION}_macos-10.11.dmg` at the same le
 
 ### PyPI
 
-Set up `.pypirc` to have both `pypitest` and `pypi`. Also see: [How to submit a package to PyPI](http://peterdowns.com/posts/first-time-with-pypi.html)
+Set up `.pypirc` to have both `pypitest` and `pypi`:
+```
+[distutils]
+index-servers =
+  pypi
+  pypitest
+
+[pypi]
+repository=https://upload.pypi.org/legacy/
+username=$USERNAME
+password=$PASSWORD
+
+[pypitest]
+repository=https://test.pypi.org/legacy/
+username=$USERNAME
+password=$PASSWORD
+```
+
+Also see: https://packaging.python.org/guides/migrating-to-pypi-org/
 
 Always first test changes on `pypitest` before making changes to `pypi`.
 
