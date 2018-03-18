@@ -5,9 +5,29 @@ To create a release package with test data for release on github.
 python setup.py sdist_test_data
 ```
 
-## PyPI legacy
+## .pypirc
 
-Set up `.pypirc` to have both `pypitest` and `pypi`.
+Set up `.pypirc` to have both `pypitest` and `pypi`:
+```
+[distutils]
+index-servers =
+  pypi
+  pypitest
+
+[pypi]
+repository=https://upload.pypi.org/legacy/
+username=$USERNAME
+password=$PASSWORD
+
+[pypitest]
+repository=https://test.pypi.org/legacy/
+username=$USERNAME
+password=$PASSWORD
+```
+
+Also see: https://packaging.python.org/guides/migrating-to-pypi-org/
+
+## PyPI legacy
 
 Always first test changes on `pypitest` before making changes to `pypi`.
 
@@ -17,8 +37,6 @@ python setup.py sdist upload -r pypitest
 ```
 
 ## PyPI
-
-Set up `.pypirc` to have both `pypitest` and `pypi`.
 
 Always first test changes on `pypitest` before making changes to `pypi`.
 
