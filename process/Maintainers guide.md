@@ -11,7 +11,7 @@ This page contains information relevant to maintainers of the log2timeline proje
   * [macOS packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#macos-packaged-release)
   * [Ubuntu source dpkg for GIFT PPA](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20PPA.md)
   * [Windows packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Packaging%20with%20pyinstaller.md)
-  * [PyPI](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#pypi)
+  * [PyPI](https://github.com/log2timeline/l2tdocs/blob/master/process/PyPI.md)
 * [Updating plaso's docker image](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
 
 ## Mailing list
@@ -90,42 +90,6 @@ Change to the plaso source directory and create a distribution package by runnin
 ```
 
 This will create a file named: `plaso-${VERSION}_macos-10.11.dmg` at the same level as the plaso source directory.
-
-### PyPI
-
-Set up `.pypirc` to have both `pypitest` and `pypi`:
-```
-[distutils]
-index-servers =
-  pypi
-  pypitest
-
-[pypi]
-repository=https://upload.pypi.org/legacy/
-username=$USERNAME
-password=$PASSWORD
-
-[pypitest]
-repository=https://test.pypi.org/legacy/
-username=$USERNAME
-password=$PASSWORD
-```
-
-Also see: https://packaging.python.org/guides/migrating-to-pypi-org/
-
-Always first test changes on `pypitest` before making changes to `pypi`.
-
-To upload a new release:
-```
-python setup.py sdist upload -r pypitest
-```
-
-The package on PyPI does not contain the test files due to size limitations.
-
-To create a release package with test data for release on github.
-```
-python setup.py sdist_test_data
-```
 
 ## Updating the plaso's image on Docker's Hub to the latest version in PPA
 
