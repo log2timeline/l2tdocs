@@ -11,19 +11,19 @@ Release issue template, example https://github.com/log2timeline/plaso/issues/190
   - `gpg --armor --detach-sign dist/plaso-$VERSION.tar.gz > dist/plaso-$VERSION.tar.gz.asc`
 - [ ] [Update pypi](https://github.com/log2timeline/l2tdocs/blob/master/process/PyPI.md)
 - [ ] [Update GIFT PPA](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20PPA.md)
-  - Build Ubuntu source debs
+  - Build Ubuntu source debs: `PYTHONPATH=. ./tools/build.py --preset plaso dpkg-source`
   - Update GIFT PPA testing, dev, stable
 - [ ] [Update GIFT COPR](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20COPR.md)
-  - Build Fedora source rpms
+  - Build Fedora source rpms: `PYTHONPATH=. ./tools/build.py --preset plaso srpm`
   - Update GIFT COPR testing, dev, stable
 - [ ] [Update l2tbinaries](https://github.com/log2timeline/l2tdocs/blob/master/process/l2tbinaries.md) macos
-  - Build MacOS binaries
+  - Build MacOS binaries: `PYTHONPATH=. ./tools/build.py --preset plaso pkg`
   - update l2tbinaries, testing, dev, stable
 - [ ] [Update l2tbinaries](https://github.com/log2timeline/l2tdocs/blob/master/process/l2tbinaries.md) win32
-  - Build Windows binaries
+  - Build 32-bit Windows binaries: `PYTHONPATH=. ./tools/build.py --preset plaso msi`
   - update l2tbinaries, testing, dev, stable
 - [ ] [Update l2tbinaries](https://github.com/log2timeline/l2tdocs/blob/master/process/l2tbinaries.md) win64
-  - Build Windows binaries
+  - Build 64-bit Windows binaries: `PYTHONPATH=. ./tools/build.py --preset plaso msi`
   - update l2tbinaries, testing, dev, stable
 - [ ] [Update docker image](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
 - [ ] Update Github release with binaries
