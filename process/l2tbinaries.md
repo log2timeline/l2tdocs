@@ -90,9 +90,9 @@ git push -f
 
 Wait for the [Travis-CI](https://travis-ci.org/log2timeline/l2tbinaries/branches) and [AppVeyor](https://ci.appveyor.com/project/joachimmetz/l2tbinaries/history) tests to pass.
 
-#### Updating Dev branch
+#### Updating dev branch
 
-To update dev from test
+To update dev from testing
 
 
 ```
@@ -103,6 +103,7 @@ git push -f
 ```
 
 ### Promoting binary package files from dev to master (stable)
+
 This process is much the same as updating dev from testing:
 
 ```
