@@ -4,6 +4,7 @@ Release issue template, example https://github.com/log2timeline/plaso/issues/190
 
 ```
 - [ ] Update version
+  - `review.py update-version`
 - [ ] Create github release and tag
 - [ ] Upload source package
   - `./setup.py sdist_test_data`
