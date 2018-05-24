@@ -66,6 +66,7 @@ git push
 Update the SHA-256 sums
 
 ```
+git checkout testing
 ./utils/update-sha256sums.sh
 
 ```
@@ -87,17 +88,27 @@ git rebase -i 0f5dcf092ca43c3be88533b4d3fbdc1287bae948
 git push -f
 ```
 
-Wait for the Travis-CI and AppVeyor tests to pass.
+Wait for the [Travis-CI](https://travis-ci.org/log2timeline/l2tbinaries/branches) and [AppVeyor](https://ci.appveyor.com/project/joachimmetz/l2tbinaries/history) tests to pass.
 
-#### Preparing testing
+#### Updating Dev branch
 
-To update testing from dev
+To update dev from test
 
 
 ```
 git checkout dev
 git reset --hard 0f5dcf092ca43c3be88533b4d3fbdc1287bae948
 git pull . testing
+git push -f
+```
+
+### Promoting binary package files from dev to master (stable)
+This process is much the same as updating dev from testing:
+
+```
+git checkout master
+git reset --hard 0f5dcf092ca43c3be88533b4d3fbdc1287bae948
+git pull . dev
 git push -f
 ```
 
