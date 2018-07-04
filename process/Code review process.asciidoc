@@ -77,9 +77,8 @@ git push
 === Step 4 - Start a code review
 Once you think your changes are ready, you start the review process. There are a few different choices:
 
-Reitveld
-Github (command line)
-Github (web)
+* Reitveld
+* Github
 
 :numbered!:
 [appendix]
