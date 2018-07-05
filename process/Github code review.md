@@ -12,13 +12,14 @@ PYTHONPATH=./l2tdevtools python ./l2tdevtools/tools/review.py --project_path=/pa
 ```
 
 ## Option 2: Create a pull request using the Github web UI
-This process is documented by Github [here](https://help.github.com/articles/creating-a-pull-request/). Once this is
-done, request a review from one of the project maintainers, as documented by Github [here](https://help.github.com/articles/requesting-a-pull-request-review/).
+This process is documented by Github [here](https://help.github.com/articles/creating-a-pull-request/). 
+Once this is done, request a review from one of the project maintainers, as documented by 
+Github [here](https://help.github.com/articles/requesting-a-pull-request-review/).
 If you don't know who to request, just use the reviewer suggested by Github.
 
 # Status checks
-Once your pull request has been created, review the output of the automated status checkers. Your pull request can't be
-merged until the
+Once your pull request has been created, review the output of the automated status checkers. 
+Your pull request can't be merged until the checkers report everything is OK. 
 
 ## Receiving Github reviews
 Your pull request will be assigned to a project maintainer either by the script or the reviewer.
