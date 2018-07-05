@@ -134,3 +134,20 @@ The script performs the following steps:
 (origin). This triggers the PR to close.
 * Closes the code review on codereview.appspot.com
 * Removes the review file in `./reviews`
+
+:numbered!:
+[appendix]
+== Review file
+
+A review file has the name of the corresponding feature branch e.g. `myfeature`.
+
+It currently consists of a single number e.g.
+....
+285170043
+....
+
+This number is the corresponding code review issue on codereview.appspot.com.
+
+[NOTE]
+The format of the review file is subject to change. There are ideas to add
+the diffbase and other code review relevant information.

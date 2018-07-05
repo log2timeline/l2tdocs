@@ -77,25 +77,11 @@ git push
 === Step 4 - Start a code review
 Once you think your changes are ready, you start the review process. There are a few different choices:
 
-* Reitveld
-* Github
+* https://github.com/log2timeline/l2tdocs/blob/master/process/Github%20code%20review.md[Github]
+* https://github.com/log2timeline/l2tdocs/blob/master/process/Rietveld%20code%20review.asciidoc[Rietveld (codereview.appspot.com)]
 
-:numbered!:
-[appendix]
-== Review file
-
-A review file has the name of the corresponding feature branch e.g. `myfeature`.
-
-It currently consists of a single number e.g.
-....
-285170043
-....
-
-This number is the corresponding code review issue on codereview.appspot.com.
-
-[NOTE]
-The format of the review file is subject to change. There are ideas to add
-the diffbase and other code review relevant information.
+=== Step 5 - Merging
+Once the review is complete, the project maintainer reviewing the change will merge it into the code repository.
 
 [preface]
 == Document information
