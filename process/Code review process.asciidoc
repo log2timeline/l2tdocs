@@ -122,7 +122,7 @@ merge your pull request into the project. Once that's completed, you can delete 
 | Abstract: | Description of the code review process using by the log2timeline projects
 | Classification: | Public
 | Keywords: | Design proposal
-| Status: | Draft
+| Status: | In use
 |===
 
 [preface]
