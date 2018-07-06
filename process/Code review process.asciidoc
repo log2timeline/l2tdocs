@@ -121,7 +121,7 @@ merge your pull request into the project. Once that's completed, you can delete 
 | Author(s): | Joachim Metz <joachim.metz@gmail.com>
 | Abstract: | Description of the code review process using by the log2timeline projects
 | Classification: | Public
-| Keywords: | Design proposal
+| Keywords: | Development process
 | Status: | In use
 |===
 
