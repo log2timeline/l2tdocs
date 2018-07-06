@@ -78,9 +78,9 @@ git push
 Once you think your changes are ready, you start the review process. There are two options to start a code review on Github:
 
 === Option 1: Create a pull request using the Github web UI
-This process is documented by Github [here](https://help.github.com/articles/creating-a-pull-request/).
+This process is documented by Github https://help.github.com/articles/creating-a-pull-request/[here].
 Once this is done, request a review from one of the project maintainers, as documented by
-Github [here](https://help.github.com/articles/requesting-a-pull-request-review/).
+Github https://help.github.com/articles/requesting-a-pull-request-review/[here].
 
 If you don't know who to request, use the reviewer suggested by Github.
 
@@ -95,20 +95,20 @@ PYTHONPATH=./l2tdevtools python ./l2tdevtools/tools/review.py --project_path=/pa
 
 === Step 5 - Status checks
 Once your pull request has been created, automated checkers will run to on your changes to check for mistakes, or code
-that doesn't match the style guide. Review the [output from the tools](https://help.github.com/articles/about-status-checks/),
+that doesn't match the style guide. Review the https://help.github.com/articles/about-status-checks/[output from the tools],
 and make sure your pull request passes.
 
-Your pull request [can't be merged](https://help.github.com/articles/about-required-status-checks/) until the checkers
+Your pull request https://help.github.com/articles/about-required-status-checks/[cannot be merged] until the checkers
 report everything is OK.
 
 === Step 6 - Making changes after reviews
-Your pull request will be [assigned](https://help.github.com/articles/assigning-issues-and-pull-requests-to-other-github-users/)
+Your pull request will be https://help.github.com/articles/assigning-issues-and-pull-requests-to-other-github-users/[assigned]
 to a project maintainer either by the script or the reviewer. The maintainer will review your code, and may push some
 changes to your branch and/or request that you make changes. If they do make changes, make sure your local copy of the
 branch (`git pull`) before making further changes.
 
 After they've reviewed your code, make any necessary changes, and push them to your feature branch. After that, reply to the comments made by the
-reviewer, then [request a new review](https://help.github.com/articles/requesting-a-pull-request-review/) from the same reviewer.
+reviewer, then https://help.github.com/articles/requesting-a-pull-request-review/[request a new review] from the same reviewer.
 
 === Step 5 - Merging
 Once the pull request assignee is happy with your propopsed changes, and all the status checks have passed, they'll
