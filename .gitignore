@@ -10,3 +10,7 @@
 
 # Code review files
 /.review
+
+# Pycharm files
+/.idea
+
