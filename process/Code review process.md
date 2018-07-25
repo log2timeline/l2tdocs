@@ -31,10 +31,13 @@ Therefore we would like to ask people to hang on, to get through the code review
 
 And if things are unclear, don't hesitate to ask. The developer mailing list is: log2timeline-dev@googlegroups.com or you can join the slack channel [here](https://t.co/mO1re10Bfs). 
 
-## Process
+## Detailed Steps
 
-### Step 1 - set up your personal fork
-The first step to contributing to one of the log2timeline projects is to set up your personal fork.
+### Step 0 - Set up a development environment
+Before you start writing code, set up a  [development environment](https://github.com/log2timeline/plaso/wiki/Developers-Guide#setting-up-and-maintaining-your-development-environment)
+
+### Step 1 - Set up your personal fork
+The next step to contributing to one of the log2timeline projects is to set up your personal fork.
 
 To set up a personal fork:
 
