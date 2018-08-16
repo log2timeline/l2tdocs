@@ -71,7 +71,7 @@ git checkout testing
 
 ```
 
-Rebase and squash individual platform specific commits using `git rebase -i` so that the commit
+Rebase and squash individual platform specific commits, using `git rebase -i`, so that the commit
 history looks similar to:
 ```
 Updated 64-bit Windows builds of dependencies.
