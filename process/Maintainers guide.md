@@ -100,6 +100,7 @@ cd config/docker/
 docker build --no-cache --force-rm -t l2tdocker/plaso .
 <... wait ... wait ...>
 Successfully built f0edcb57611b
+Successfully tagged l2tdocker/plaso:latest
 ```
 Your new image is `f0edcb57611b` and it was tagged as `l2tdocker/plaso:latest`. Make sure you've installed the version you want.
 ```
