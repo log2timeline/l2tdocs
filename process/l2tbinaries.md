@@ -63,13 +63,13 @@ git push
 
 #### Preparing testing
 
-Update the SHA-256 sums
+Update the SHA-256 integrity hashes
 
 ```
-git checkout testing
 ./utils/update-sha256sums.sh
-
 ```
+
+Note: that this script will switch to the testing branch.
 
 Rebase and squash individual platform specific commits, using `git rebase -i`, so that the commit
 history looks similar to:
@@ -96,10 +96,7 @@ To update dev from testing
 
 
 ```
-git checkout dev
-git reset --hard 0f5dcf092ca43c3be88533b4d3fbdc1287bae948
-git pull . testing
-git push -f
+./utils/update-dev.sh
 ```
 
 ### Promoting binary package files from dev to master (stable)
@@ -107,8 +104,5 @@ git push -f
 This process is much the same as updating dev from testing:
 
 ```
-git checkout master
-git reset --hard 0f5dcf092ca43c3be88533b4d3fbdc1287bae948
-git pull . dev
-git push -f
+./utils/update-stable.sh
 ```
