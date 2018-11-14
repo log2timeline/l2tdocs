@@ -69,10 +69,8 @@ Update the SHA-256 integrity hashes
 ./utils/update-sha256sums.sh
 ```
 
-Note: that this script will switch to the testing branch.
+Note: that this script will switch to the testing branch and reorder the commits in the following order (from newest to oldest):
 
-Rebase and squash individual platform specific commits, using `git rebase -i`, so that the commit
-history looks similar to:
 ```
 Updated 64-bit Windows builds of dependencies.
 Updated 32-bit Windows builds of dependencies.
@@ -82,6 +80,8 @@ Worked on utility scripts.
 Updated README.md
 Initial commit.
 ```
+
+Use `git rebase -i` to squash merge similar commits.
 
 ```
 git rebase -i 0f5dcf092ca43c3be88533b4d3fbdc1287bae948
