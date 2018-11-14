@@ -88,8 +88,6 @@ git rebase -i 0f5dcf092ca43c3be88533b4d3fbdc1287bae948
 git push -f
 ```
 
-Note: to automatically reorder: `GIT_SEQUENCE_EDITOR="./utils/git-sequence-editor.sh" git rebase -i 0f5dcf092ca43c3be88533b4d3fbdc1287bae948`
-
 Wait for the [Travis-CI](https://travis-ci.org/log2timeline/l2tbinaries/branches) and [AppVeyor](https://ci.appveyor.com/project/joachimmetz/l2tbinaries/history) tests to pass.
 
 #### Updating dev branch
