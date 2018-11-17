@@ -58,6 +58,26 @@ To upload a new release to pypi:
 twine upload ${DIST_PACKAGE} ${DIST_PACKAGE}.asc
 ```
 
+### wheel
+
+To create a new release:
+```
+rm -rf build/ dist/
+python setup.py bdist_wheel
+DIST_WHEEL=`ls -1 dist/*.whl`
+gpg --armor --detach-sign --output ${DIST_WHEEL}.asc ${DIST_WHEEL}
+```
+
+To upload a new release to pypitest:
+```
+twine upload --repository pypitest ${DIST_WHEEL} ${DIST_WHEEL}.asc
+```
+
+To upload a new release to pypi:
+```
+twine upload ${DIST_WHEEL} ${DIST_WHEEL}.asc
+```
+
 ### Also see:
 
 * [How to submit a package to PyPI](http://peterdowns.com/posts/first-time-with-pypi.html)
