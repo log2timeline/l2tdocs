@@ -13,7 +13,6 @@ This repository contains documentation for the log2timeline projects.
 * [l2tbinaries](https://github.com/log2timeline/l2tbinaries)
 * [l2tpreg](https://github.com/log2timeline/l2tpreg)
 
-
 ## Projects for future development
 * [ACStore](https://github.com/log2timeline/acstore)
 * [dfKinds](https://github.com/log2timeline/dfkinds)
