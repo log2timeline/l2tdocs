@@ -22,13 +22,13 @@ Log2Timeline's style is based on the the [Google Python Style Guide](https://goo
 variations and expansion spelled out in the sections below.
 
 ## Compatibility
-All new log2timeline code should be compatible with both Python 3.4+ and Python 2.7+. The [Python 3 Guide](Python-3-Guide) has some more detail about compatibility issues, and the pylint configuration will also flag some issues.
+All new log2timeline code should be compatible with both Python 3.4+ and Python 2.7+.
 
 
 ## Indentation
 
-* Indent your code blocks with 2 spaces (not 4 as in the style guide).
-* In the case of a hanging indent, use four spaces (according to the style guide).
+* Indent your code blocks with 2 spaces (not 4 as in the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)).
+* In the case of a hanging indent, use four spaces.
 
 ## Naming
 
@@ -73,7 +73,7 @@ SomeMethod(secondary=False)
 
 ## Strings
 
-* Quote strings as ' or """ and not "
+* Quote strings as ' (one single quote) or """ (three double quotes) and not " (one double quote).
   * Quote strings in command line arguments (argparse) as "
 * Textual strings should be Unicode strings.
   * Use the [unicode_literals](http://python-future.org/unicode_literals.html) module to make all strings unicode by default.
@@ -102,29 +102,7 @@ Per [PEP8](https://pep8.org/#programming-recommendations): "Be consistent in ret
 * We use "Google Style" docstrings. 
   * For examples, see [this page](http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html) as well as the notes below. 
 
-There are still a few legacy docstrings in the codebase, here are some examples you might see. Please don't write new code that looks like this:
-
-```python
-def AddAnalysisReport(self, analysis_report):
-    """Adds an analysis report.
-    
-    Args:
-      analysis_report: a report.
-    """
-```
-This is missing an important detail, the argument type. Is it a string? Some other sort of object? How about this:
-
-```python
-def AddAnalysisReport(self, analysis_report):
-    """Adds an analysis report.
-    
-    Args:
-      analysis_report: an analysis report object (instance of AnalysisReport)
-    """
-```
-This is overly verbose, and is hard to parse.
-
-Instead do:
+Example:
 
 ```python
 def AddAnalysisReport(self, analysis_report, storage_writer=None):
@@ -210,8 +188,8 @@ class SampleClass(object):
   """Summary of class here.
 
   Attributes:
-      eggs (int): number of eggs we have laid.
-      likes_spam (bool): whether we like SPAM or not.
+    eggs (int): number of eggs we have laid.
+    likes_spam (bool): whether we like SPAM or not.
   """
 ```
 
@@ -225,8 +203,7 @@ class SampleClass(object):
 
   def __init__(self):
     """Summary of method here."""
-    self.__private_attribute = None
-    self._another_protected_attribute = None
+    super(SampleClass, self).__init__()
     self._protected_attribute = None
     self.another_public_attribute = None
     self.public_attribute = None
@@ -246,5 +223,3 @@ class SampleClass(object):
 # -*- coding: utf-8 -*-
 ```
 Also see: [PEP 0263](https://www.python.org/dev/peps/pep-0263/)
-
-
