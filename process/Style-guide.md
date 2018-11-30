@@ -56,7 +56,6 @@ Other things to keep in mind when using Pylint:
 
 ### Function and method arguments
 
-* Prefix unused function or method arguments with `unused_`. 
 * In addition to the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html#Comments) sort keyword arguments alphabetically by name.
 * Call keyword argument with their keyword prefix, not as positional arguments. For example:
 ```python
@@ -87,7 +86,7 @@ SomeMethod(secondary=False)
 * Although Python allows for ```try ... except ... else``` we prefer not to use it.
 * Make exception messages as useful and descriptive and possible. For example, if an argument is out of an acceptable range, print the invalid value to speed-up debugging.
 
-##Return statements
+## Return statements
 
 Per [PEP8](https://pep8.org/#programming-recommendations): "Be consistent in return statements. Either all return statements in a function should return an expression, or none of them should. If any return statement returns an expression, any return statements where no value is returned should explicitly state this as return None, and an explicit return statement should be present at the end of the function (if reachable)."
 
