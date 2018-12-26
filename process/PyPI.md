@@ -27,15 +27,6 @@ password=$PASSWORD
 
 Also see: https://packaging.python.org/guides/migrating-to-pypi-org/
 
-## PyPI legacy
-
-Always first test changes on `pypitest` before making changes to `pypi`.
-
-To upload a new release:
-```
-python setup.py sdist upload -r pypitest
-```
-
 ## PyPI
 
 Always first test changes on `pypitest` before making changes to `pypi`.
