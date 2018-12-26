@@ -35,6 +35,23 @@ dch --preserve -v ${VERSION}-1${VERSION_SUFFIX}~${DISTRIBUTION} --distribution $
 
 Also see: https://github.com/log2timeline/l2tdevtools/wiki/Build-script#build-target-dpkg-source
 
+Configure gpg to use gpg-agent otherwise you'll have to provide your password for every run of debuild:
+
+```
+cat >${HOME}/gpg-agent.conf <<EOT
+default-cache-ttl 1800
+max-cache-ttl 1800
+EOT
+```
+
+```
+cat >${HOME}/.gnupg/gpg.conf <<EOT
+use-agent
+EOT
+```
+
+`killall -q gpg-agent && gpg-agent --daemon`
+
 ### Building source dpkg files
 
 To build source dpkg files use [l2tdevtools](https://github.com/log2timeline/l2tdevtools)
