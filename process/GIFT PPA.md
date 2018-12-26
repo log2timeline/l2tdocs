@@ -66,7 +66,7 @@ PYTHONPATH=. tools/build.py --build-directory build/dpkg-source --preset plaso d
 
 You can build a source dpkg file manually with:
 ```
-debuild -Sa
+debuild -S -sa
 ```
 
 ### Uploading source dpkg files to the GIFT PPA
