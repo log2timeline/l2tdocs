@@ -8,6 +8,8 @@ Install the following packages to set up your build environment:
 apt-get install autoconf automake autopoint build-essential byacc debhelper devscripts dh-autoreconf dput flex git libtool pkg-config python-all python-all-dev python-pkg-packages python-setuptools python3-all python3-all-dev python3-setuptools quilt
 ```
 
+**Note that these package names are for Ubuntu 16.04 and can differ on other versions of Ubuntu/Debian**
+
 Create a local copy of the latest l2tdevtools:
 ```
 git clone https://github.com/log2timeline/l2tdevtools.git
