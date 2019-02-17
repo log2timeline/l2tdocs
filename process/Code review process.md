@@ -110,9 +110,9 @@ If you don't know who to request, use the reviewer suggested by Github.
 Check out the l2tdevtools repository
 `git clone https://github.com/log2timeline/l2tdevtools.git`
 
-Run the review.py script with the create-pr option:
+Run the review.py script with the create-pr option from the project directory:
 ```
-PYTHONPATH=./l2tdevtools python ./l2tdevtools/tools/review.py --project_path=/path/to/the/project create-pr
+PYTHONPATH=../l2tdevtools ../l2tdevtools/tools/review.py create-pr
 ```
 
 ### Step 5 - Status checks
