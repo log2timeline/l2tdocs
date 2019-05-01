@@ -79,8 +79,7 @@ Commit and push the changes to the wiki pages.
 
 Use l2tdevtools to download the .dmg files:
 ```
-PYTHONPATH=. ./tools/update.py --download-only --preset plaso
-rm -f build/hachoir*.dmg
+PYTHONPATH=. ./tools/update.py --download-only --download-directory downloads --preset plaso
 ```
 
 Change to the plaso source directory and create a distribution package by running:
