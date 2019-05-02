@@ -17,10 +17,10 @@ git clone https://github.com/log2timeline/l2tdevtools.git
 
 Set up a build directory:
 ```
-mkdir -p l2tdevtools/build/dpkg-source
+mkdir -p l2tbuilds/dpkg-source
 ```
 
-Create: `l2tdevtools/build/dpkg-source/prep-dpkg-source.sh`
+Create: `l2tbuilds/dpkg-source/prep-dpkg-source.sh`
 
 ```
 export NAME="Joachim Metz";
@@ -61,7 +61,7 @@ with build target: [dpkg-source](https://github.com/log2timeline/l2tdevtools/wik
 
 ```
 cd l2tdevtools
-PYTHONPATH=. tools/build.py --build-directory build/dpkg-source --preset plaso dpkg-source
+PYTHONPATH=. tools/build.py --build-directory ../l2tbuilds/dpkg-source --preset plaso dpkg-source
 ```
 
 #### Troubleshooting failed builds
@@ -77,7 +77,7 @@ debuild -S -sa
 
 To upload to the testing track of GIFT:
 ```
-dput ppa:gift/testing build/dpkg-source/python-plaso_20170806-1ppa1~trusty_source.changes
+dput ppa:gift/testing ../l2tbuilds/dpkg-source/python-plaso_20170806-1ppa1~trusty_source.changes
 ```
 
 Also see: https://help.launchpad.net/Packaging/PPA/Uploading
