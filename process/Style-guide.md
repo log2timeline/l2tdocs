@@ -12,9 +12,10 @@ To keep the codebase maintainable and readable, all code is developed using a si
 Having a unified style makes it much easier to maintain the our projects. That means that every developer should be able to make changes in any file in the log2timeline organization without worrying about different code styles. 
 
 # Project-specific deviations
+
 Some log2timeline projects systematically vary from this guide. Specifically:
+
 * [l2tscaffolder](https://github.com/log2timeline/l2tscaffolder) is not compatible with Python 2.
-* [dfTimewolf](https://github.com/log2timeline/l2tscaffolder) does not follow the naming rules, directly following the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) instead.
 
 # Basis
 
@@ -22,8 +23,8 @@ Log2Timeline's style is based on the the [Google Python Style Guide](https://goo
 variations and expansion spelled out in the sections below.
 
 ## Compatibility
-All new log2timeline code should be compatible with both Python 3.4+ and Python 2.7+.
 
+All new log2timeline code should be compatible with both Python 3.4+ and Python 2.7+.
 
 ## Indentation
 
