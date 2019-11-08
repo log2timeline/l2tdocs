@@ -8,9 +8,7 @@ This page contains information relevant to maintainers of the log2timeline proje
 * [Generating plaso wiki pages](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#generating-plaso-wiki-pages)
 * [Creating a packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#creating-a-packaged-release)
   * [Fedora source rpm for GIFT COPR](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20COPR.md)
-  * [macOS packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#macos-packaged-release)
   * [Ubuntu source dpkg for GIFT PPA](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20PPA.md)
-  * [Windows packaged release](https://github.com/log2timeline/l2tdocs/blob/master/process/Packaging%20with%20pyinstaller.md)
   * [PyPI](https://github.com/log2timeline/l2tdocs/blob/master/process/PyPI.md)
 * [Updating plaso's docker image](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
 
@@ -75,20 +73,6 @@ PYTHONPATH=plaso plaso/tools/log2timeline.py --use-markdown --parsers list > pla
 Commit and push the changes to the wiki pages.
 
 ## Creating a packaged release
-### macOS packaged release
-
-Use l2tdevtools to download the .dmg files:
-```
-PYTHONPATH=. ./tools/update.py --download-only --download-directory downloads --preset plaso
-```
-
-Change to the plaso source directory and create a distribution package by running:
-```
-./utils/prep_dist.sh
-./config/macos/make_dist.sh
-```
-
-This will create a file named: `plaso-${VERSION}_macos-10.11.dmg` at the same level as the plaso source directory.
 
 ## Updating the plaso's image on Docker's Hub to the latest version in PPA
 
