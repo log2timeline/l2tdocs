@@ -83,14 +83,26 @@ docker build --no-cache --force-rm -t log2timeline/plaso .
 Successfully built f0edcb57611b
 Successfully tagged log2timeline/plaso:latest
 ```
-Your new image is `f0edcb57611b` and it was tagged as `log2timeline/plaso:latest`. Make sure you've installed the version you want.
+
+Your new image is `f0edcb57611b`.
+
+If the output also states:
+```
+Successfully tagged log2timeline/plaso:latest
+```
+
+Your new image was tagged as `log2timeline/plaso:latest`.
+
 ```
 $ docker run log2timeline/plaso log2timeline --version
 plaso - log2timeline version 20180930
 ```
+
 Mark your new image with this version, and set it as being the latest.
+
 ```
-docker tag log2timeline/plaso:latest log2timeline/plaso:20180930
+docker tag f0edcb57611b log2timeline/plaso:20180930
+docker tag f0edcb57611b log2timeline/plaso:latest
 ```
 Then push the updates to Docker Hub.
 ```
