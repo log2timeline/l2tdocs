@@ -18,7 +18,7 @@ variations and expansion spelled out in the sections below.
 
 ## Compatibility
 
-All new log2timeline code should be compatible with both Python 3.5+.
+All new log2timeline code should be compatible with Python 3.5+.
 
 ## Indentation
 
