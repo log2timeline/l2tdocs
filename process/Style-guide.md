@@ -40,7 +40,7 @@ Functions | **CapWords()** | **_CapWords()** (protected) and **__CapWords()** (p
 
 ## Linting
 
-log2timeline uses pylint 1.7.x to enforce some additional best practices to keep the source code more readable. These are:
+log2timeline uses pylint 2.4.x to enforce some additional best practices to keep the source code more readable. These are:
 
 * Limit the maximum number of arguments for function or method to 10
 
