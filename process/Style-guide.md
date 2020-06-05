@@ -18,7 +18,7 @@ variations and expansion spelled out in the sections below.
 
 ## Compatibility
 
-All new log2timeline code should be compatible with Python 3.5+.
+All new log2timeline code should be compatible with Python 3.6+.
 
 ## Indentation
 
@@ -49,7 +49,7 @@ Other things to keep in mind when using Pylint:
 
 ### Type annotations
 
-* Do not use `from __future__ import annotations` since it is not compatible with Python 3.5 and 3.6
+* Do not use `from __future__ import annotations` since it is not compatible with Python 3.6
 * For importing typing see: http://google.github.io/styleguide/pyguide.html#31912-imports-for-typing
 * Define type annotations as strings so `'int'` instead of `int`. This prevents having issues where types are self referencing
 * Type annotate function or method arguments and return types
