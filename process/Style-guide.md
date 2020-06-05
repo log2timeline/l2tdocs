@@ -62,13 +62,13 @@ Other things to keep in mind when using Pylint:
 * Type annotate instance attributes
 ```python
 
- def __init__(self, timestamp: typing.Optional[int] = None) -> None:
+ def __init__(self, timestamp: 'Optional[int]' = None) -> 'None':
     """Initializes a WebKit timestamp."""
     super(WebKitTime, self).__init__()
-    self._precision: str = definitions.PRECISION_1_MICROSECOND
-    self._timestamp: typing.Union[int, None] = timestamp
+    self._precision: 'str' = definitions.PRECISION_1_MICROSECOND
+    self._timestamp: 'Union[int, None]' = timestamp
 ```
-* Limit the usage of `typing.Optional` to function or method arguments, use `typing.Union` in other cases
+* Limit the usage of `Optional` to function or method arguments, use `Union` in other cases
 
 ### Function and method arguments
 
