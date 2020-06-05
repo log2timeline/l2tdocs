@@ -50,11 +50,12 @@ Other things to keep in mind when using Pylint:
 ### Type annotations
 
 * Do not use `from __future__ import annotations` since it is not compatible with Python 3.6
-* Use `import typing` not `from typing import ...`
+* For importing typing see: http://google.github.io/styleguide/pyguide.html#31912-imports-for-typing
+* Define type annotations as strings so `'int'` instead of `int`. This prevents having additional imports and issues where types are self referencing.
 * Type annotate function or method arguments and return types
 ```python
 
-  def _GetNumberOfDaysInYear(self, year: int) -> int:
+  def _GetNumberOfDaysInYear(self, year: 'int') -> 'int':
     """Retrieves the number of days in a specific year."""
 ```
 
