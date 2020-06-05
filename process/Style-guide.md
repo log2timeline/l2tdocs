@@ -49,7 +49,7 @@ Other things to keep in mind when using Pylint:
 
 ### Type annotations
 
-* Add `from __future__ import annotations` for Python 3.7 and later type annotations support
+* Do not use `from __future__ import annotations` since it is not compatible with Python 3.6
 * Use `import typing` not `from typing import ...`
 * Type annotate function or method arguments and return types
 ```python
