@@ -49,9 +49,9 @@ Other things to keep in mind when using Pylint:
 
 ### Type annotations
 
-* Do not use `from __future__ import annotations` since it is not compatible with Python 3.6
+* Do not use `from __future__ import annotations` since it is not compatible with Python 3.5 and 3.6
 * For importing typing see: http://google.github.io/styleguide/pyguide.html#31912-imports-for-typing
-* Define type annotations as strings so `'int'` instead of `int`. This prevents having additional imports and issues where types are self referencing.
+* Define type annotations as strings so `'int'` instead of `int`. This prevents having issues where types are self referencing
 * Type annotate function or method arguments and return types
 ```python
 
