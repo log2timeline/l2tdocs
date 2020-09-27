@@ -1,4 +1,4 @@
-This page contains information relevant to creating a new plaso release.
+This page contains information relevant to creating a new Plaso release.
 
 Create a new release issue using the [issue template](https://github.com/log2timeline/plaso/issues/new?template=release.md&title=Release%20plaso%20VERSION)
 
