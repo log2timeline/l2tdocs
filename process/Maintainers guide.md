@@ -44,7 +44,7 @@ A GitHub webhook triggers [sphinx-apidoc](http://sphinx-doc.org/man/sphinx-apido
 This will generate reStructured text (.rst) files which readthedocs will use to
 generate HTML files (.html).
 
-Note that to generate the API documentatioin readthedocs needs to `import` each
+Note that to generate the API documentation readthedocs needs to `import` each
 Python file. This will fail if it cannot import all dependencies, and it is not
 possible to install native dependencies on readthedocs. The Sphinx configuration
 tries to take care of this by automatically mocking the dependencies in
@@ -54,8 +54,10 @@ sphinx config.
 
 To test building the HTML file locally run:
 ```
-cd docs && make html
+tox -edocs
 ```
+
+The generated documentation can be found in dist/docs
 
 ### Readthedocs Markdown compatibility
 
@@ -108,4 +110,3 @@ docker login   # Ask log2timeline-maintainers@googlegroups.com for the credentia
 docker push log2timeline/plaso:20180930
 docker push log2timeline/plaso:latest
 ```
-
