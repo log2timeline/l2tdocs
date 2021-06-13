@@ -99,9 +99,9 @@ git push
 ### Step 4 - Start a code review
 Once you think your changes are ready, you start the review process.
 
-This process is documented by Github https://help.github.com/articles/creating-a-pull-request/[here].
+This process is documented by Github [here](https://help.github.com/articles/creating-a-pull-request)
 Once this is done, request a review from one of the project maintainers, as documented by
-Github [here](https://help.github.com/articles/requesting-a-pull-request-review/).
+Github [here](https://help.github.com/articles/requesting-a-pull-request-review).
 
 ### Step 5 - Status checks
 Once your pull request has been created, automated checkers will run to on your changes to check for mistakes, or code that doesn't match the style guide. Review the [output from the tools](https://help.github.com/articles/about-status-checks/), and make sure your pull request passes.
