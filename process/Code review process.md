@@ -97,23 +97,11 @@ git push
 ```
 
 ### Step 4 - Start a code review
-Once you think your changes are ready, you start the review process. There are two options to start a code review on Github:
+Once you think your changes are ready, you start the review process.
 
-#### Option 1: Create a pull request using the Github web UI
 This process is documented by Github https://help.github.com/articles/creating-a-pull-request/[here].
 Once this is done, request a review from one of the project maintainers, as documented by
 Github [here](https://help.github.com/articles/requesting-a-pull-request-review/).
-
-If you don't know who to request, use the reviewer suggested by Github.
-
-#### Option 2: Use the review.py script from l2tdevtools:
-Check out the l2tdevtools repository
-`git clone https://github.com/log2timeline/l2tdevtools.git`
-
-Run the review.py script with the create-pr option from the project directory:
-```
-PYTHONPATH=../l2tdevtools ../l2tdevtools/tools/review.py create-pr
-```
 
 ### Step 5 - Status checks
 Once your pull request has been created, automated checkers will run to on your changes to check for mistakes, or code that doesn't match the style guide. Review the [output from the tools](https://help.github.com/articles/about-status-checks/), and make sure your pull request passes.
