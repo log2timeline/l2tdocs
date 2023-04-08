@@ -4,7 +4,7 @@ the [l2tbinaries](https://github.com/log2timeline/l2tbinaries) git repository.
 l2tbinaries comes with 3 branches:
 
 * testing; track intended for testing changes to binary packages;
-* dev; development track intended for the development release of plaso and automated testing on Travis-CI and AppVeyor;
+* dev; development track intended for the development release of Plaso and automated testing on GitHub and AppVeyor;
 * master; stable track intended for the latest release of plaso.
 
 
@@ -88,7 +88,7 @@ git rebase -i 0f5dcf092ca43c3be88533b4d3fbdc1287bae948
 git push -f
 ```
 
-Wait for the [Travis-CI](https://travis-ci.org/log2timeline/l2tbinaries/branches) and [AppVeyor](https://ci.appveyor.com/project/joachimmetz/l2tbinaries/history) tests to pass.
+Wait for the GitHub actions and AppVeyor tests to pass.
 
 #### Updating dev branch
 
