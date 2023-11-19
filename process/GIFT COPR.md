@@ -6,7 +6,7 @@ The log2timeline projects distribute binary packages for Fedora via the
 To build source rpm files use [l2tdevtools](https://github.com/log2timeline/l2tdevtools)
 with build target: [srpm](https://github.com/log2timeline/l2tdevtools/wiki/Build-script#build-target-srpm).
 
-Alternatively build a source dpkg file manually with:
+Alternatively build a source rpm file manually with:
 ```
 rpmbuild -bs
 ```
