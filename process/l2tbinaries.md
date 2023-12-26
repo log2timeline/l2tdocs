@@ -26,14 +26,14 @@ cd ..
 ### Building Windows package files
 
 To build Windows package files use [l2tdevtools](https://github.com/log2timeline/l2tdevtools)
-with build target: [msi](https://github.com/log2timeline/l2tdevtools/wiki/Build-script#build-target-msi).
+with build target: [wheel](https://github.com/log2timeline/l2tdevtools/wiki/Build-script#build-target-wheel).
 
-Alternatively build a Windows package MSI file manually with:
+Alternatively build a wheel file manually with:
 
 ```
 tar xfvz dfvfs-20140219.tar.gz
 cd dfvfs-20140219/
-python setup.py bdist_msi
+python -m build --wheel
 cd ..
 ```
 
