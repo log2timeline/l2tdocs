@@ -6,7 +6,7 @@ There are several steps involved for getting a new dependency added.
 
 If the answer on any of the questions below is "no" the dependency is not suitable for our use cases.
 
-* Is the license of the depency compatible with that of the project?
+* Is the license of the dependency compatible with that of the project?
 
 For the log2timeline projects this implies the license of the dependency should be compatible with [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0). Code licensed under a GPL, AGPL or BSD 4-clause cannot be integrated in a binary build, hence these licenses are deemed incompatible. Note that this could also apply to other source code licenses.
 
