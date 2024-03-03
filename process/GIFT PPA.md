@@ -5,7 +5,7 @@ The log2timeline projects distribute binary packages for Ubuntu via the
 
 Install the following packages to set up your build environment:
 ```
-apt-get install autoconf automake autopoint build-essential byacc debhelper devscripts dh-autoreconf dput flex git libtool pkg-config python3-all python3-all-dev python3-setuptools quilt
+apt-get install autoconf automake autopoint build-essential byacc debhelper devscripts dh-autoreconf dh-python dput flex git libtool pkg-config python3-all python3-all-dev python3-setuptools quilt
 ```
 
 **Note that these package names are for Ubuntu 24.04 and can differ on other versions of Ubuntu/Debian**
