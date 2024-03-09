@@ -89,7 +89,7 @@ docker push log2timeline/plaso:staging
 
 Run the integration tests
 
-### Promote the Docker image stable
+### Promote the Docker image to release (stable)
 
 ```
 docker login   # Ask log2timeline-maintainers@googlegroups.com for the credentials
