@@ -83,6 +83,15 @@ Then upload (push) the Docker image to Docker Hub:
 
 ```
 docker login   # Ask log2timeline-maintainers@googlegroups.com for the credentials
-docker push log2timeline/plaso:20180930
-docker push log2timeline/plaso:latest
+docker push log2timeline/plaso:20240308
+docker push log2timeline/plaso:staging
+```
+
+Run the integration tests
+
+### Promote the Docker image stable
+
+```
+docker login   # Ask log2timeline-maintainers@googlegroups.com for the credentials
+docker push log2timeline/plaso:release
 ```
