@@ -67,12 +67,15 @@ SomeMethod(secondary=False)
 
 ## Strings
 
-* Quote strings as ' (one single quote) or """ (three double quotes) and not " (one double quote).
+* Quote strings as ' (one single quote) or """ (three double quotes) and not " (one double quote) including a string literal in an f-string.
   * Quote strings in command line arguments (argparse) as "
 * Textual strings should be Unicode strings.
   * Use the [unicode_literals](http://python-future.org/unicode_literals.html) module to make all strings unicode by default.
-* Use the format() function instead of the %-style of formatting strings.
-  * Use positional or parameter format specifiers with typing e.g. '{0:s}' or '{text:s}' instead of '{0}', '{}' or '{:s}'. If we ever want to have language specific output strings we don't need to change the entire codebase (again). It also makes is easier in determining what type every parameter is expected to be.
+* Use the [f-strings](https://peps.python.org/pep-0498/) instead of the `format()` function or %-style of formatting strings wherever possible.
+  * The codebases are still being migrated to this style, so there may be some stray use of other styles around.
+  * Use format specifiers with typing, for example, `f'{example:s}'` for increased clarity about the type and formatting of different variables.
+  * If referencing a string literal in a f-string, use double quotes for the literal. For example: `f'String in dict: {dict["first"]}'`
+
 
 ## Exceptions
 
