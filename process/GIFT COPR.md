@@ -17,7 +17,7 @@ rpmbuild -bs
 
 To upload to the testing track of GIFT:
 ```
-copr-cli build @gift/testing --nowait dist/plaso-1.5.1-1.src.rpm
+copr-cli build @gift/testing --nowait ../l2tbuilds/srpm/plaso-20251027-1.src.rpm
 ```
 
 ### Determining which source rpm files to upload
