@@ -77,7 +77,7 @@ debuild -S -sa
 
 To upload to the testing track of GIFT:
 ```
-dput ppa:gift/testing ../l2tbuilds/dpkg-source/python-plaso_20170806-1ppa1~trusty_source.changes
+dput ppa:gift/testing ../l2tbuilds/dpkg-source/plaso_20251027-1ppa1~noble_source.changes
 ```
 
 Also see: https://help.launchpad.net/Packaging/PPA/Uploading
