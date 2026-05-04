@@ -178,7 +178,7 @@ Arguments like `cls`, `self`, `*args`, `**kwargs` should not be explicitly named
 In addition to the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)  sort class attribute alphabetically by name.
 
 ```
-class SampleClass(object):
+class SampleClass:
   """Summary of class here.
 
   Attributes:
@@ -192,12 +192,12 @@ class SampleClass(object):
 In addition to the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) sort instance attribute alphabetically by name inside the constructor (`__init__`).
 
 ```
-class SampleClass(object):
+class SampleClass:
   """Summary of class here."""
 
   def __init__(self):
     """Summary of method here."""
-    super(SampleClass, self).__init__()
+    super().__init__()
     self._protected_attribute = None
     self.another_public_attribute = None
     self.public_attribute = None
