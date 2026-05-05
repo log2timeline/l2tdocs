@@ -212,8 +212,3 @@ class SampleClass:
 
 * Avoid the use of global variables.
 * Use class methods in preference to static methods
-* At the top of source files define the encoding, which should be UTF-8, e.g.:
-```
-# -*- coding: utf-8 -*-
-```
-Also see: [PEP 0263](https://www.python.org/dev/peps/pep-0263/)
