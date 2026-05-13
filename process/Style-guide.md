@@ -23,7 +23,7 @@ All new log2timeline code should be compatible with Python 3.10+.
 ## Indentation
 
 * Indent your code blocks with 2 spaces (not 4 as in the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)).
-* In the case of a hanging indent, use four spaces.
+* In the case of a hanging indent, use 4 spaces.
 
 ## Naming
 
