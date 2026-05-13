@@ -69,14 +69,12 @@ SomeMethod(secondary=False)
 
 * Quote strings as ' (one single quote) or """ (three double quotes) and not " (one double quote).
   * Quote strings in command line arguments (argparse) as "
-* Textual strings should be Unicode strings.
-  * Use the [unicode_literals](http://python-future.org/unicode_literals.html) module to make all strings unicode by default.
-* Use the format() function instead of the %-style of formatting strings.
-  * Use positional or parameter format specifiers with typing e.g. '{0:s}' or '{text:s}' instead of '{0}', '{}' or '{:s}'. If we ever want to have language specific output strings we don't need to change the entire codebase (again). It also makes is easier in determining what type every parameter is expected to be.
+* Use the f-string notation, instead of the format() function or %-style of formatting strings.
+  * Use parameter format specifiers with typing e.g. '{text:s}' instead of '{text}'.
 
 ## Exceptions
 
-* When catching exceptions use "as exception:" not some alternative form like "as error:" or "as details:"
+* When catching exceptions use "as exception:" not some alternative form like "as error:", "as details:" or "as e:"
 * Raise exceptions like this: ```raise MyException('Error message')``` or ```raise MyException```.
 * Although Python allows for ```try ... except ... else``` we prefer not to use it.
 * Make exception messages as useful and descriptive and possible. For example, if an argument is out of an acceptable range, print the invalid value to speed-up debugging.
