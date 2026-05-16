@@ -238,7 +238,7 @@ python -m tox -e black
 
 ### docformatter
 
-Note docformatter can make formatting changes that black not agrees with. Hence it is recommended to run black consequtatively. 
+Note docformatter can make formatting changes that black not agrees with. Hence it is recommended to run black consecutively. 
 
 ```bash
 python -m tox -e docformatter,black
