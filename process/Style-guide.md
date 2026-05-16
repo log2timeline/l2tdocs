@@ -238,10 +238,10 @@ python -m tox -e black
 
 ### docformatter
 
-Note docformatter can make formatting changes that black not agrees with. black is considered authorative.
+Note docformatter can make formatting changes that black not agrees with. Hence it is recommended to run black consequtatively. 
 
 ```bash
-python -m tox -e docformatter
+python -m tox -e docformatter,black
 ```
 
 ### pylint
