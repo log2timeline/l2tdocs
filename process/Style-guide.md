@@ -215,8 +215,8 @@ class SampleClass:
 
 ### SQLite parser plugins
 
-* No need to use "ORDER BY", let Plaso handle the sorting.
-* No need to use formatting functions, let Plaso handle the formatting.
+* In QUERIES no need to use ```ORDER BY```, let Plaso handle the sorting.
+* In QUERIES no need to use formatting functions, let Plaso handle the formatting.
 
 ## Unit tests
 
