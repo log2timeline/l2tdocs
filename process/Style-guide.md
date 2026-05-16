@@ -211,6 +211,13 @@ class SampleClass:
     self.public_attribute = None
 ```
 
+## Plaso
+
+### SQLite parser plugins
+
+* No need to use "ORDER BY", let Plaso handle the sorting.
+* No need to use formatting functions, let Plaso handle the formatting.
+
 ## Unit tests
 
 * Use ```self.assertEqual``` instead of ```self.assertEquals```, same applies to ```self.assertNotEquals```
