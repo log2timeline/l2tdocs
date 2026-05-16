@@ -73,7 +73,7 @@ SomeMethod(secondary=False)
 
 ## Strings
 
-* Quote strings as " (one double quote) or """ (three double quotes) and not 1 (one single quote).
+* Quote strings as " (one double quote) or """ (three double quotes). Use ' (one single quote) if there are double quotes in the string.
 * Use the f-string notation, instead of the format() function or %-style of formatting strings.
   * Use parameter format specifiers with typing e.g. '{text:s}' instead of '{text}'.
   * Limit complex statements between the curly brackets. Assign the result of the statement to a local variable before the f-string().
@@ -130,7 +130,8 @@ A few other tips:
 ### Compound types
 
 If a function deals with a compound type (list, dict), document it like so:
-```
+
+```python
 Args:
   constraints (dict[str, Filter]): constraint name mapped to the filter that implements the constraint.
 
@@ -142,7 +143,7 @@ Returns:
 
 If you need to specify multiple types, use a pipe to separate them. For example:
 
-```
+```python
 Args:
   path (str|Path): path to tag file.
 ```
@@ -151,7 +152,7 @@ Args:
 
 Python simulates multiple arguments being returned by implicitly returning a tuple. Document like so:
 
-```
+```python
 ...
 Returns:
   tuple: containing:
@@ -166,7 +167,7 @@ return name, parser
 
 Arguments like `cls`, `self`, `*args`, `**kwargs` should not be explicitly named in the `Args:` section.
 
-```
+```python
   def CopyToIsoFormat(cls, timestamp, timezone=pytz.UTC, raise_error=False):
     """Copies the timestamp to an ISO 8601 formatted string.
 
@@ -184,7 +185,7 @@ Arguments like `cls`, `self`, `*args`, `**kwargs` should not be explicitly named
 
 In addition to the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)  sort class attribute alphabetically by name.
 
-```
+```python
 class SampleClass:
   """Summary of class here.
 
@@ -198,7 +199,7 @@ class SampleClass:
 
 In addition to the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) sort instance attribute alphabetically by name inside the constructor (`__init__`).
 
-```
+```python
 class SampleClass:
   """Summary of class here."""
 
@@ -217,3 +218,33 @@ class SampleClass:
 
 * Avoid the use of global variables.
 * Use class methods in preference to static methods
+
+## Helpful tooling
+
+### Black Python formatter
+
+Always use the latest version of black. This is what will be run by the CI tests.
+
+```bash
+python -m tox -e black
+```
+
+### docformatter
+
+Note docformatter can make formatting changes that black not agrees with. black is considered authorative.
+
+```bash
+python -m tox -e docformatter
+```
+
+### pylint
+
+```bash
+python -m tox -e pylint
+```
+
+### yamllint
+
+```bash
+python -m tox -e yamllint
+```
