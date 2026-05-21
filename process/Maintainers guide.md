@@ -1,16 +1,16 @@
 This page contains information relevant to maintainers of the log2timeline
 projects.
 
-* [Mailing list](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#mailing-list)
-* [Maintainer guidelines](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#maintainer-guidelines)
-* [Maintainer tools](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#maintainer-tools)
+* [Mailing list](https://github.com/log2timeline/l2tdocs/blob/main/process/Maintainers%20guide.md#mailing-list)
+* [Maintainer guidelines](https://github.com/log2timeline/l2tdocs/blob/main/process/Maintainers%20guide.md#maintainer-guidelines)
+* [Maintainer tools](https://github.com/log2timeline/l2tdocs/blob/main/process/Maintainers%20guide.md#maintainer-tools)
 * Generating Plaso test files
 * Readthedocs.org and generating docs with sphinx-doc
 * Creating a packaged release
-  * [Fedora source rpm for GIFT COPR](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20COPR.md)
-  * [Ubuntu source dpkg for GIFT PPA](https://github.com/log2timeline/l2tdocs/blob/master/process/GIFT%20PPA.md)
-  * [PyPI](https://github.com/log2timeline/l2tdocs/blob/master/process/PyPI.md)
-* [Updating Plaso's docker image](https://github.com/log2timeline/l2tdocs/blob/master/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
+  * [Fedora source rpm for GIFT COPR](https://github.com/log2timeline/l2tdocs/blob/main/process/GIFT%20COPR.md)
+  * [Ubuntu source dpkg for GIFT PPA](https://github.com/log2timeline/l2tdocs/blob/main/process/GIFT%20PPA.md)
+  * [PyPI](https://github.com/log2timeline/l2tdocs/blob/main/process/PyPI.md)
+* [Updating Plaso's docker image](https://github.com/log2timeline/l2tdocs/blob/main/process/Maintainers%20guide.md#updating-the-plasos-image-on-dockers-hub-to-the-latest-version-in-ppa)
 
 ## Mailing list
 
@@ -36,7 +36,7 @@ Plaso configuration uses the [autodoc](http://sphinx-doc.org/ext/autodoc.html)
 plugin for automatic documentation generation, and the [napoleon](http://sphinxcontrib-napoleon.readthedocs.org/en/latest/sphinxcontrib.napoleon.html)
 plugin to read our "Google style" docstrings.
 
-The configuration is stored in [docs/conf.py](https://github.com/log2timeline/plaso/blob/master/docs/conf.py).
+The configuration is stored in [docs/conf.py](https://github.com/log2timeline/plaso/blob/main/docs/conf.py).
 
 The HTML documentation is built and stored with readthedocs.org.
 
@@ -48,7 +48,7 @@ Note that to generate the API documentation readthedocs needs to `import` each
 Python file. This will fail if it cannot import all dependencies, and it is not
 possible to install native dependencies on readthedocs. The Sphinx configuration
 tries to take care of this by automatically mocking the dependencies in
-[dependencies.py](https://github.com/log2timeline/plaso/blob/master/plaso/dependencies.py)
+[dependencies.py](https://github.com/log2timeline/plaso/blob/main/plaso/dependencies.py)
 but it may be necessary on occasion to add a dependency explicitly to the
 sphinx config.
 
