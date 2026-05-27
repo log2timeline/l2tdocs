@@ -1,78 +1,9 @@
-The package on PyPI does not contain the test files due to size limitations.
+Packages on PyPI are deployed automatically.
 
-To create a release package with test data for release on github.
+Packages on PyPI do not contain the test files due to size limitations.
+
+To manually create a release package with test data for release on GitHub.
 ```
-python setup.py sdist_test_data
+cp MANIFEST.test_data.in MANIFEST.in 
+python -m build --sdist
 ```
-
-## .pypirc
-
-Set up `.pypirc` to have both `pypitest` and `pypi`:
-```
-[distutils]
-index-servers =
-  pypi
-  pypitest
-
-[pypi]
-repository=https://upload.pypi.org/legacy/
-username=$USERNAME
-password=$PASSWORD
-
-[pypitest]
-repository=https://test.pypi.org/legacy/
-username=$USERNAME
-password=$PASSWORD
-```
-
-Also see: https://packaging.python.org/guides/migrating-to-pypi-org/
-
-## PyPI
-
-Always first test changes on `pypitest` before making changes to `pypi`.
-
-To create a new release:
-```
-rm -rf build/ dist/
-python setup.py sdist
-DIST_PACKAGE=`ls -1 dist/*.tar.gz`
-gpg --armor --detach-sign --output ${DIST_PACKAGE}.asc ${DIST_PACKAGE}
-```
-
-To upload a new release to pypitest:
-```
-twine upload --repository pypitest ${DIST_PACKAGE} ${DIST_PACKAGE}.asc
-```
-
-To upload a new release to pypi:
-```
-twine upload ${DIST_PACKAGE} ${DIST_PACKAGE}.asc
-```
-
-### wheel
-
-To create a new release:
-```
-rm -rf build/ dist/
-python setup.py bdist_wheel
-DIST_WHEEL=`ls -1 dist/*.whl`
-gpg --armor --detach-sign --output ${DIST_WHEEL}.asc ${DIST_WHEEL}
-```
-
-To upload a new release to pypitest:
-```
-twine upload --repository pypitest ${DIST_WHEEL} ${DIST_WHEEL}.asc
-```
-
-To upload a new release to pypi:
-```
-twine upload ${DIST_WHEEL} ${DIST_WHEEL}.asc
-```
-
-### Also see:
-
-* [How to submit a package to PyPI](http://peterdowns.com/posts/first-time-with-pypi.html)
-* [Migrating to PyPI.org](https://packaging.python.org/guides/migrating-to-pypi-org)
-* [Packaging and Distributing Projects - Create an account](https://packaging.python.org/tutorials/distributing-packages/#create-an-account)
-* [Packaging and Distributing Projects - Upload your distributions](https://packaging.python.org/tutorials/distributing-packages/#upload-your-distributions)
-
