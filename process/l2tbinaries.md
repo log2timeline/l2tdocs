@@ -1,27 +1,12 @@
-The log2timeline projects distribute binary packages for macOS and Windows via 
+The log2timeline projects distribute binary packages for 32 and 64-bit Windows via 
 the [l2tbinaries](https://github.com/log2timeline/l2tbinaries) git repository.
 
-l2tbinaries comes with 3 branches:
+l2tbinaries comes with 4 branches:
 
 * testing; track intended for testing changes to binary packages;
 * dev; development track intended for the development release of Plaso and automated testing on GitHub and AppVeyor;
-* master; stable track intended for the latest release of plaso.
-
-
-### Building macOS package files
-
-To build macOS package files use [l2tdevtools](https://github.com/log2timeline/l2tdevtools)
-with build target: [pkg](https://github.com/log2timeline/l2tdevtools/wiki/Build-script#build-target-pkg).
-
-Alternatively build a macOS package dpkg file manually with:
-
-```
-tar xfvz dfvfs-20140219.tar.gz
-cd dfvfs-20140219/
-python setup.py install --root=$PWD/tmp --install-data=/usr/local
-pkgbuild --root tmp --identifier com.github.log2timeline.dfvfs --version 20140219 --ownership recommended python-dfvfs-20140219.pkg
-cd ..
-```
+* staging; staging track intended for pre-release testing of Plaso.
+* main; stable track intended for the latest release of Plaso.
 
 ### Building Windows package files
 
@@ -49,13 +34,13 @@ git pull
 
 To upload to the testing branch of l2tbinaries:
 ```
-./utils/macos-sync.sh
+./utils/win32-sync.sh
 ```
 
 Remove any unwanted updates.
 
 ```
-git commit -a -m "Updated macOS builds of dependencies."
+git commit -a -m "Updated 32-bit Windows builds of dependencies."
 git push
 ```
 
@@ -74,7 +59,6 @@ Note: that this script will switch to the testing branch and reorder the commits
 ```
 Updated 64-bit Windows builds of dependencies.
 Updated 32-bit Windows builds of dependencies.
-Updated macOS builds of dependencies.
 Worked on tests.
 Worked on utility scripts.
 Updated README.md
