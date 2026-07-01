@@ -213,6 +213,9 @@ class SampleClass:
 
 ## Plaso
 
+* Avoid the use of global variables.
+* Use class methods in preference to static methods
+
 ### Data format and encoding issue handling
 
 * Produce an extraction warning (`ProduceExtractionWarning`) if a Plaso parser or parser plugin encounters a data format or encoding issue.
@@ -227,9 +230,6 @@ class SampleClass:
 
 * Use ```self.assertEqual``` instead of ```self.assertEquals```, same applies to ```self.assertNotEquals```
 * Use ```self.assertIsNone(variable)``` instead of ```self.assertEqual(variable, None)```, same applies to ```self.assertNotEqual```
-
-* Avoid the use of global variables.
-* Use class methods in preference to static methods
 
 ## Helpful tooling
 
