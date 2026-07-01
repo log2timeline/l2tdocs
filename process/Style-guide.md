@@ -213,6 +213,11 @@ class SampleClass:
 
 ## Plaso
 
+### Data format and encoding issue handling
+
+* Produce an extraction warning (`ProduceExtractionWarning`) if a Plaso parser or parser plugin encounters a data format or encoding issue.
+* Use `decode(errors="backslashreplace")` instead of `decode(errors="replace")`
+
 ### SQLite parser plugins
 
 * In QUERIES no need to use ```ORDER BY```, let Plaso handle the sorting.
