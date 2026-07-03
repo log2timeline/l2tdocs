@@ -226,6 +226,7 @@ class SampleClass:
 * do not use [reserved field names](https://plaso.readthedocs.io/en/latest/sources/user/Output-and-formatting.html), with the exception of "username". These include: "MACB", "date", "datetime", "desc", "description", "description_short", "display_name", "extra", "filename", "format", "host", "hostname", "inode", "macb", "message", "message_short", "notes", "parser", "short", "source", "source_long", "source_short", "sourcetype", "tag", "time", "timestamp", "timestamp_desc", "timezone", "type", "tz", "user", "values", "yara_match" and "zone".
 * use "message_body" instead of "body", "log_line" or equivalent
 * use "username" instead of "user_name" or equivalent
+* if an event data attribute value is empty use None instead of an empty string or equivalent
 
 ### SQLite parser plugins
 
