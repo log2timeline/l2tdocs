@@ -223,8 +223,9 @@ class SampleClass:
 
 ### Event data attributes
 
-* do not use [reserved field names](https://plaso.readthedocs.io/en/latest/sources/user/Output-and-formatting.html), with the exception of "hostname" and "username". These include: "date", "datetime", "display_name", "filename", "host", "inode", "macb", "message", "message_short", "parser", "source", "source_long", "source_short", "sourcetype", "tag", "time", "timestamp", "timestamp_desc", "timezone", "type", "user", "values", "yara_match", "zone".
+* do not use [reserved field names](https://plaso.readthedocs.io/en/latest/sources/user/Output-and-formatting.html), with the exception of "filename", "hostname". "inode" and "username". These include: "date", "datetime", "display_name", "host", "macb", "message", "message_short", "parser", "source", "source_long", "source_short", "sourcetype", "tag", "time", "timestamp", "timestamp_desc", "timezone", "type", "user", "values", "yara_match", "zone".
 * use "description" instead of "desc" or equivalent
+* use "filename" instead of "file", "file_name" or equivalent
 * use "hostname" instead of "host", "host_name" or equivalent
 * use "message_body" instead of "body", "log_line", "message" or equivalent
 * use "username" instead of "user", "user_name" or equivalent
