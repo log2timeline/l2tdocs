@@ -221,6 +221,12 @@ class SampleClass:
 * Produce an extraction warning (`ProduceExtractionWarning`) if a Plaso parser or parser plugin encounters a data format or encoding issue.
 * Use `decode(errors="backslashreplace")` instead of `decode(errors="replace")`
 
+### Event data attributes
+
+* do not use [reserved field names](https://plaso.readthedocs.io/en/latest/sources/user/Output-and-formatting.html), with the exception of "username"
+* use "message_body" instead of "body", "log_line", "message" or equivalent
+* use "username" instead of "user", "user_name" or equivalent
+
 ### SQLite parser plugins
 
 * In QUERIES no need to use ```ORDER BY```, let Plaso handle the sorting.
