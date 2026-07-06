@@ -224,6 +224,7 @@ class SampleClass:
 ### Event data attributes
 
 * do not use [reserved field names](https://plaso.readthedocs.io/en/latest/sources/user/Output-and-formatting.html), with the exception of "filename", "hostname". "inode" and "username". These include: "date", "datetime", "display_name", "host", "macb", "message", "message_short", "parser", "source", "source_long", "source_short", "sourcetype", "tag", "time", "timestamp", "timestamp_desc", "timezone", "type", "user", "values", "yara_match", "zone".
+* do not use "corrupted" or "recovered" instead use Plaso built in functionality to handle these states
 * use "description" instead of "desc" or equivalent
 * use "filename" instead of "file", "file_name" or equivalent
 * use "hostname" instead of "computer_name", "host", "host_name" or equivalent
