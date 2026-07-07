@@ -219,7 +219,7 @@ class SampleClass:
 ### Data format and encoding issue handling
 
 * Produce an extraction warning (`ProduceExtractionWarning`) if a Plaso parser or parser plugin encounters a data format or encoding issue.
-* Use `decode(errors="backslashreplace")` instead of `decode(errors="replace")`
+* Use `decode(errors="backslashreplace")` instead of `decode(errors="ignore")` or `decode(errors="replace")`
 
 ### Event data attributes
 
