@@ -245,12 +245,10 @@ class SampleClass:
 ## Test data
 
 * First make sure the test data has a Plaso compatible license. If the test data was not authored by you (as the contributor), make sure you have permission to use it and mention its orginal source in ACKNOWLEDGEMENTS. **Do not include test data that cannot be redistributed.**
-* put Android related test files under "test_data/android"
-* put Chrome related test files under "test_data/chrome"
-* put Firefox related test files under "test_data/firefox"
-* put iOS related test files under "test_data/ios"
-* put Mac OS related test files under "test_data/macos"
-* otherwise make a data format specific sub directory under "test_data", e.g. "test_data/utmp"
+* Guidance for the most appropriate location of test files in the test_data directory:
+  * with the exception of generic formats like plist and sqlite use the data format specific sub directory if there is one
+  * if the test data is specific to a platform (e.g. Android or Mac OS) or application (e.g. Chrome or Firefox) use the platform/application specific sub directory
+  * otherwise make a data format specific sub directory under "test_data", e.g. "test_data/utmp"
 
 ## Helpful tooling
 
