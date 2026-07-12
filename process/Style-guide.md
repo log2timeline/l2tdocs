@@ -231,6 +231,7 @@ class SampleClass:
 * use "message_body" instead of "body", "log_line", "message" or equivalent
 * use "username" instead of "user", "user_name" or equivalent
 * if an event data attribute value is empty use None instead of an empty string or equivalent
+* an event data attribute value should be of type `bool`, `int`, `str`, `list[str]` or `dfdatetime.DateTimeValues` (or subclass)
 
 ### SQLite parser plugins
 
