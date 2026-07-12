@@ -249,6 +249,7 @@ class SampleClass:
 * put Chrome related test files under "test_data/chrome"
 * put Firefox related test files under "test_data/firefox"
 * put iOS related test files under "test_data/ios"
+* put Mac OS related test files under "test_data/macos"
 * otherwise make a data format specific sub directory under "test_data", e.g. "test_data/utmp"
 
 ## Helpful tooling
