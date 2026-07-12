@@ -242,6 +242,13 @@ class SampleClass:
 * Use ```self.assertEqual``` instead of ```self.assertEquals```, same applies to ```self.assertNotEquals```
 * Use ```self.assertIsNone(variable)``` instead of ```self.assertEqual(variable, None)```, same applies to ```self.assertNotEqual```
 
+## Test data
+
+* First make sure the test data has a Plaso compatible license. If the test data was not authored by you (as the contributor), make sure to mention its orginal source in ACKNOWLEDGEMENTS. Do not include test data that cannot be redistributed.
+* put Android related test files under "test_data/android"
+* put iOS related test files under "test_data/ios"
+* otherwise make a data format specific sub directory under "test_data", e.g. "test_data/utmp"
+
 ## Helpful tooling
 
 ### Black Python formatter
