@@ -247,6 +247,7 @@ class SampleClass:
 * First make sure the test data has a Plaso compatible license. If the test data was not authored by you (as the contributor), make sure you have permission to use it and mention its orginal source in ACKNOWLEDGEMENTS. **Do not include test data that cannot be redistributed.**
 * put Android related test files under "test_data/android"
 * put Chrome related test files under "test_data/chrome"
+* put Firefox related test files under "test_data/firefox"
 * put iOS related test files under "test_data/ios"
 * otherwise make a data format specific sub directory under "test_data", e.g. "test_data/utmp"
 
