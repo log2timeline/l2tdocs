@@ -223,6 +223,8 @@ class SampleClass:
 
 ### Event data attributes
 
+Naming:
+
 * do not use [reserved field names](https://plaso.readthedocs.io/en/latest/sources/user/Output-and-formatting.html), with the exception of "filename", "hostname". "inode" and "username". These include: "date", "datetime", "display_name", "host", "macb", "message", "message_short", "parser", "source", "source_long", "source_short", "sourcetype", "tag", "time", "timestamp", "timestamp_desc", "timezone", "type", "user", "values", "yara_match", "zone".
 * do not use "corrupted" or "recovered" instead use Plaso built in functionality to handle these states
 * use "description" instead of "desc" or equivalent
@@ -230,8 +232,15 @@ class SampleClass:
 * use "hostname" instead of "computer_name", "host", "host_name" or equivalent
 * use "message_body" instead of "body", "log_line", "message" or equivalent
 * use "username" instead of "user", "user_name" or equivalent
-* if an event data attribute value is empty use None instead of an empty string or equivalent
+
+Usage:
+
 * an event data attribute value should be of type `bool`, `int`, `str`, `list[str]` or `dfdatetime.DateTimeValues` (or subclass)
+* if an event data attribute value is empty use None instead of an empty string or equivalent
+* use type `bool` for boolean values stored as integers
+* do not store large binary data (BLOBS) or original log lines, just for context, this can significantly negatively impact performance
+* do not use dictionaries as event data attribute value, this is not supported by event filter or OpenSearch output moudle
+* do not unecessarily expand values to strings, use a formatter (`plaso/data/formatters/*.yaml`) if a value always expands to the same string
 
 ### SQLite parser plugins
 
