@@ -5,9 +5,10 @@ This repository contains documentation for the log2timeline projects.
 ## Projects under active development
 
 * [Plaso](https://github.com/log2timeline/Plaso)
+* [ACStore](https://github.com/log2timeline/acstore)
+* [dfDateTime](https://github.com/log2timeline/dfdatetime)
+* [dfTimewolf](https://github.com/log2timeline/dftimewolf)
 * [dfVFS](https://github.com/log2timeline/dfvfs)
-* [dfDateTime](https://github.com/log2timeline/dfDateTime)
-* [dfTimewolf](https://github.com/log2timeline/dfTimewolf)
 * [dfWinReg](https://github.com/log2timeline/dfwinreg)
 * [l2tdevtools](https://github.com/log2timeline/l2tdevtools)
 * [l2tscaffolder](https://github.com/log2timeline/l2tscaffolder)
@@ -15,7 +16,6 @@ This repository contains documentation for the log2timeline projects.
 
 ## Projects for future development
 
-* [ACStore](https://github.com/log2timeline/acstore)
 * [dfKinds](https://github.com/log2timeline/dfkinds)
 
 ## Deprecated projects
