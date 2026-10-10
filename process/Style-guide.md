@@ -259,6 +259,11 @@ Attribute usage:
 * Use ```self.assertEqual``` instead of ```self.assertEquals```, same applies to ```self.assertNotEquals```
 * Use ```self.assertIsNone(variable)``` instead of ```self.assertEqual(variable, None)```, same applies to ```self.assertNotEqual```
 
+## Tests
+
+* Only use mock when really necessary
+* Do not mix performance (bench or benchmark) tests with unit (functional or behavioral) tests
+
 ## Test data
 
 * First make sure the test data has a Plaso compatible license. If the test data was not authored by you (as the contributor), make sure you have permission to use it and mention its orginal source in ACKNOWLEDGEMENTS. **Do not include test data that cannot be redistributed.**
